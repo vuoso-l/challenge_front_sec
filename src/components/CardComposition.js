@@ -16,8 +16,6 @@ const CardComposition = ({
   const recommendationUrl = "recommendations";
   const { data } = useFetch(`${url}${recommendationUrl}`);
 
-  if (!data) return null;
-
   const openCard = (e) => {
     setIsOpen(true);
 
