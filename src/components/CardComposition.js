@@ -44,42 +44,42 @@ const CardComposition = ({
     );
   }
 
-    return (
-      <>
-        {filterDb.map((product) => {
-          return (
-            <section className="elementsCard" key={product.product_id}>
-              <h4>{product.name}</h4>
+  return (
+    <>
+      {filterDb.map((product) => {
+        return (
+          <section className="elementsCard" key={product.product_id}>
+            <h4>{product.name}</h4>
 
-              <img
-                id={product.product_id}
-                onClick={openCard}
-                src={product.image_url}
-                alt={product.name}
-              ></img>
+            <img
+              id={product.product_id}
+              onClick={openCard}
+              src={product.image_url}
+              alt={product.name}
+            ></img>
 
-              <p>${product.total_price}</p>
+            <p>${product.total_price}</p>
 
-              <div className="btnGroup">
-                <button onClick={() => sumHandleCart(product)}>
-                  Agregar al carrito
-                </button>
-                <button onClick={() => restHandleCart(product)}>
-                  Eliminar del carrito
-                </button>
-              </div>
+            <div className="btnGroup">
+              <button onClick={() => sumHandleCart(product)}>
+                Agregar al carrito
+              </button>
+              <button onClick={() => restHandleCart(product)}>
+                Eliminar del carrito
+              </button>
+            </div>
 
-              <DetailsProduct
-                isOpen={isOpen}
-                closeCard={closeCard}
-                product={product}
-                recommendedImage={recommendedImage}
-              />
-            </section>
-          );
-        })}
-      </>
-    );
-  }
+            <DetailsProduct
+              isOpen={isOpen}
+              closeCard={closeCard}
+              product={product}
+              recommendedImage={recommendedImage}
+            />
+          </section>
+        );
+      })}
+    </>
+  );
+};
 
 export default CardComposition;
