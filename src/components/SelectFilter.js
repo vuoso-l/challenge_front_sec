@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
 
 const SelectFilter = ({ url, setIsLoaded, setError, handleChange }) => {
   const [category, setCategory] = useState([]);
 
-  useEffect(() => {
+  const { data } = useFetch(url);
+  /* useEffect(() => {
     const abortController = new AbortController();
     fetch(url)
       .then((response) => response.json())
@@ -20,7 +22,7 @@ const SelectFilter = ({ url, setIsLoaded, setError, handleChange }) => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, []); */
   
   let id = "category";
 
@@ -30,8 +32,8 @@ const SelectFilter = ({ url, setIsLoaded, setError, handleChange }) => {
       <select name={id} id={id} onChange={handleChange}>
         <option value="">Elige una categoría</option>
         <option value="all">Ver todas las categorías</option>
-        {category &&
-          category.map((el) => (
+        {data &&
+          data.map((el) => (
             <option key={el} value={el}>
               {el}
             </option>

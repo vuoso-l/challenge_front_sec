@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CardComposition from "./CardComposition";
 import "./CardProduct.css";
 import SelectFilter from "./SelectFilter";
 import ShopCart from "./ShopCart";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Swal from 'sweetalert2';
+import { useFetch } from "../hooks/useFetch";
 
 const CardProduct = () => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  /* const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false); */
   const [categorySelected, setCategorySelected] = useState("all");
-  const [db, setDb] = useState([]);
+  //const [db, setDb] = useState([]);
   const [numCart, setNumCart] = useLocalStorage("numCart", 0);
   const [elementCart, setElementCart] = useLocalStorage("elementCart", []);
 
@@ -18,7 +19,9 @@ const CardProduct = () => {
   const categoriesUrl = "categories";
   const productsUrl = "products";
 
-  useEffect(() => {
+  const { data, error, isLoaded } = useFetch(`${url}${productsUrl}`);
+
+  /* useEffect(() => {
     const abortController = new AbortController();
     fetch(`${url}${productsUrl}`)
       .then((response) => response.json())
@@ -35,7 +38,7 @@ const CardProduct = () => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, []); */
 
   const sumHandleCart = (product) => {
     setNumCart(numCart + 1);
@@ -54,13 +57,14 @@ const CardProduct = () => {
   };
   
   const restHandleCart = (product) => {
-    console.log(elementCart);
-    console.log(product);
-    console.log(elementCart.includes(product));
+    console.log("localStorage", elementCart);
+    console.log("product", product);
+    console.log("index", elementCart.indexOf(product));
+    console.log("includes", elementCart.includes(product));
     if (elementCart.includes(product)) {
       numCart > 0 && setNumCart(numCart - 1);
       let index = elementCart.indexOf(product);
-      console.log(index);
+      console.log("2do index", index);
       elementCart.splice(index, 1);
       setElementCart(elementCart);
       Swal.fire({
@@ -96,6 +100,8 @@ const CardProduct = () => {
         <h2>Página de productos</h2>
         <SelectFilter
           url={`${url}${categoriesUrl}`}
+          /* setIsLoaded={setIsLoaded}
+          setError={setError} */
           handleChange={(e) => {
             setCategorySelected(e.target.value);
           }}
@@ -103,7 +109,7 @@ const CardProduct = () => {
 
         <div className="card">
           <CardComposition
-            db={db}
+            db={data}
             categorySelected={categorySelected}
             sumHandleCart={sumHandleCart}
             restHandleCart={restHandleCart}

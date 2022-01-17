@@ -14,7 +14,7 @@ const CardComposition = ({
 
   const url = "http://localhost:3000/";
   const recommendationUrl = "recommendations";
-  const { data, error, loading } = useFetch(`${url}${recommendationUrl}`);
+  const { data } = useFetch(`${url}${recommendationUrl}`);
 
   if (!data) return null;
 
@@ -44,11 +44,6 @@ const CardComposition = ({
     );
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (loading) {
-    return <div>Loading...</div>;
-  } else {
     return (
       <>
         {filterDb.map((product) => {
@@ -86,6 +81,5 @@ const CardComposition = ({
       </>
     );
   }
-};
 
 export default CardComposition;
