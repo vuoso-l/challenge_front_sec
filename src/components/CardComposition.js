@@ -33,11 +33,15 @@ const CardComposition = ({
 
   const closeCard = () => setIsOpen(false);
 
-  let filterDb = db;
+  let filterDb;
   if (categorySelected === "all" || categorySelected === "") {
     filterDb = db.filter((prod) => prod.categories !== categorySelected);
   } else if (categorySelected !== "all") {
-    filterDb = db.filter((prod) => prod.categories == categorySelected);
+    filterDb = db.filter(
+      (prod) =>
+        prod.categories[0] === categorySelected ||
+        prod.categories[1] === categorySelected
+    );
   }
 
   if (error) {
