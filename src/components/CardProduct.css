@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  width: 90%;
+  padding: 20px 0px;
+  box-shadow: 3px 3px 10px grey;
+  border-radius: 20px;  
+  background: radial-gradient(#3f87a6, rgb(61, 61, 240));
+}
