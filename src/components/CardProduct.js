@@ -3,6 +3,7 @@ import CardComposition from "./CardComposition";
 import "./CardProduct.css";
 import SelectFilter from "./SelectFilter";
 import ShopCart from "./ShopCart";
+import Loader from "./Loader";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Swal from "sweetalert2";
 import { useFetch } from "../hooks/useFetch";
@@ -76,7 +77,7 @@ const CardProduct = () => {
       toast: true,
     });
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <Loader />
   } else {
     return (
       <main>
