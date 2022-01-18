@@ -5,7 +5,7 @@ import SelectFilter from "./SelectFilter";
 import ShopCart from "./ShopCart";
 import Loader from "./Loader";
 import useLocalStorage from "../hooks/useLocalStorage";
-import Swal from "sweetalert2";
+import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
 
 const CardProduct = () => {
@@ -20,60 +20,29 @@ const CardProduct = () => {
 
   const sumHandleCart = (product) => {
     setElementCart([...elementCart, product]);
-    Swal.fire({
-      title: "Producto agregado al carrito!",
-      text: `Se agregó ${product.name}`,
-      icon: "success",
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "OK",
-      position: "top-end",
-      toast: true,
-    });
+    SweetAlert.messageOk(
+      "Producto agregado al carrito!",
+      `Se agregó ${product.name}`
+    );
   };
 
   const restHandleCart = (product) => {
-    console.log("localStorage", elementCart);
-    console.log("product", product);
-    console.log("index", elementCart.indexOf(product));
-    console.log("includes", elementCart.includes(product));
     const index = elementCart.findIndex(
       (elem) => elem.product_id === product.product_id
     );
     if (index >= 0) {
       setElementCart((arr) => arr.filter((elem, ind) => ind !== index));
-
-      Swal.fire({
-        title: "Producto eliminado del carrito!",
-        text: `Se eliminó ${product.name}`,
-        icon: "success",
-        confirmButtonColor: "#3085d6",
-        confirmButtonText: "OK",
-        position: "top-end",
-        toast: true,
-      });
+      SweetAlert.messageOk(
+        "Producto eliminado del carrito!",
+        `Se eliminó ${product.name}`
+      );
     } else {
-      Swal.fire({
-        title: "Ooops!",
-        text: `No tienes ese producto en tu carrito`,
-        icon: "error",
-        confirmButtonColor: "#ff0000",
-        confirmButtonText: "OK",
-        position: "top-end",
-        toast: true,
-      });
+      SweetAlert.messageError("No tienes ese producto en tu carrito");
     }
   };
 
   if (error) {
-    return Swal.fire({
-      title: "Ooops!",
-      text: `${error}`,
-      icon: "error",
-      confirmButtonColor: "#ff0000",
-      confirmButtonText: "OK",
-      position: "top-end",
-      toast: true,
-    });
+    return SweetAlert.messageError(error);
   } else if (!isLoaded) {
     return <Loader />;
   } else {
