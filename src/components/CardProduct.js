@@ -10,7 +10,6 @@ import { useFetch } from "../hooks/useFetch";
 
 const CardProduct = () => {
   const [categorySelected, setCategorySelected] = useState("all");
-  const [numCart, setNumCart] = useLocalStorage("numCart", 0);
   const [elementCart, setElementCart] = useLocalStorage("elementCart", []);
 
   const url = "http://localhost:3000/";
@@ -20,7 +19,6 @@ const CardProduct = () => {
   const { data, error, isLoaded } = useFetch(`${url}${productsUrl}`);
 
   const sumHandleCart = (product) => {
-    setNumCart(numCart + 1);
     setElementCart([...elementCart, product]);
     Swal.fire({
       title: "Producto agregado al carrito!",
@@ -38,12 +36,12 @@ const CardProduct = () => {
     console.log("product", product);
     console.log("index", elementCart.indexOf(product));
     console.log("includes", elementCart.includes(product));
-    if (elementCart.includes(product)) {
-      numCart > 0 && setNumCart(numCart - 1);
-      let index = elementCart.indexOf(product);
-      console.log("2do index", index);
-      elementCart.splice(index, 1);
-      setElementCart(elementCart);
+    const index = elementCart.findIndex(
+      (elem) => elem.product_id === product.product_id
+    );
+    if (index >= 0) {
+      setElementCart((arr) => arr.filter((elem, ind) => ind !== index));
+
       Swal.fire({
         title: "Producto eliminado del carrito!",
         text: `Se eliminó ${product.name}`,
@@ -77,16 +75,12 @@ const CardProduct = () => {
       toast: true,
     });
   } else if (!isLoaded) {
-    return <Loader />
+    return <Loader />;
   } else {
     return (
       <main>
-        <ShopCart
-          numCart={numCart}
-          setElementCart={setElementCart}
-          setNumCart={setNumCart}
-        />
-        <h2>Página de productos</h2>
+        <ShopCart elementCart={elementCart} setElementCart={setElementCart} />
+        {false && <h2>Página de productos</h2>}
         <SelectFilter
           url={`${url}${categoriesUrl}`}
           handleChange={(e) => {
