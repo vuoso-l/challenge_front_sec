@@ -1,17 +1,14 @@
 import React from "react";
 
-const ShopCart = ({ numCart, setElementCart, setNumCart }) => {
+const ShopCart = ({ elementCart, setElementCart }) => {
   const handleClickToEmpty = () => {
-    console.log("click");
-    localStorage.removeItem("numCart");
     localStorage.removeItem("elementCart");
-    setNumCart(0);
     setElementCart([]);
   };
 
   return (
     <div>
-      <h3>contador compras: {numCart}</h3>
+      <h3>contador compras: {elementCart.length}</h3>
       <button onClick={handleClickToEmpty}>Vaciar</button>
     </div>
   );
