@@ -1,5 +1,6 @@
 import React from 'react'
 import CardProduct from '../components/CardProduct'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 const ProductsPage = () => {
@@ -7,6 +8,7 @@ const ProductsPage = () => {
         <div>
             <Header />            
             <CardProduct />
+            <Footer />
         </div>
     )
 }
