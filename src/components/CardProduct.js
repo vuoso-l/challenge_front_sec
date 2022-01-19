@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import CardComposition from "./CardComposition";
-import "./CardProduct.css";
 import SelectFilter from "./SelectFilter";
 import ShopCart from "./ShopCart";
 import Loader from "./Loader";
 import useLocalStorage from "../hooks/useLocalStorage";
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
+import { CardStyle } from "./CardStyle";
+import ErrorComponent from "./ErrorComponent";
 
 const CardProduct = () => {
   const [categorySelected, setCategorySelected] = useState("all");
@@ -56,15 +57,17 @@ const CardProduct = () => {
             setCategorySelected(e.target.value);
           }}
         />
-
-        <div className="card">
-          <CardComposition
-            db={data}
-            categorySelected={categorySelected}
-            sumHandleCart={sumHandleCart}
-            restHandleCart={restHandleCart}
-          />
-        </div>
+        <CardStyle>
+          {
+            !data ? (<CardComposition
+              db={data}
+              categorySelected={categorySelected}
+              sumHandleCart={sumHandleCart}
+              restHandleCart={restHandleCart}
+            />) : <ErrorComponent />
+          }
+          
+        </CardStyle>
       </main>
     );
   }

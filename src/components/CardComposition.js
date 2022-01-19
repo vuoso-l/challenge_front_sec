@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import DetailsProduct from "./DetailsProduct";
 import { useFetch } from "../hooks/useFetch";
-import "./CardComposition.css";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
+import { AddButton, DeleteButton } from "./Button";
+import { ElementCardStyle } from "./ElementCardStyle";
 
 const CardComposition = ({
   db,
@@ -12,7 +13,6 @@ const CardComposition = ({
   restHandleCart,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [ccIsOpen, setCcIsOpen] = useState(true);
   const [recommendedImage, setRecommendedImage] = useState([]);
 
   const url = "http://localhost:3000/";
@@ -21,15 +21,15 @@ const CardComposition = ({
 
   const openCard = (e) => {
     setIsOpen(true);
-    setCcIsOpen(false);
 
-    data.map((rec) => e.target.id === rec.product_id && setRecommendedImage(rec.recommendations));
+    data.map(
+      (rec) =>
+        e.target.id === rec.product_id &&
+        setRecommendedImage(rec.recommendations)
+    );
   };
 
-  const closeCard = () => {
-    setIsOpen(false);
-    setCcIsOpen(true);
-  };
+  const closeCard = () => setIsOpen(false);
 
   let filterDb;
   if (categorySelected === "all" || categorySelected === "") {
@@ -51,8 +51,7 @@ const CardComposition = ({
       <>
         {filterDb.map((product) => {
           return (
-            <section
-              className={`elementsCard ${isOpen && "is-open"}`}
+            <ElementCardStyle isOpen={isOpen}       
               key={product.product_id}
             >
               <h4>{product.name}</h4>
@@ -64,17 +63,17 @@ const CardComposition = ({
                 alt={product.name}
               ></img>
 
-              <p>${product.total_price}</p>
+              <h4>${product.total_price}</h4>
 
-              <div className="btnGroup">
-                <button onClick={() => sumHandleCart(product)}>
+              <div>
+                <AddButton add onClick={() => sumHandleCart(product)}>
                   Agregar al carrito
-                </button>
-                <button onClick={() => restHandleCart(product)}>
+                </AddButton>
+                <DeleteButton del onClick={() => restHandleCart(product)}>
                   Eliminar del carrito
-                </button>
+                </DeleteButton>
               </div>
-            </section>
+            </ElementCardStyle>
           );
         })}
         <DetailsProduct

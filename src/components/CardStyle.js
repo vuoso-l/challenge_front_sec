@@ -1,4 +1,6 @@
-.card {
+import styled from "styled-components";
+
+export const CardStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -7,6 +9,6 @@
   width: 90%;
   padding: 20px 0px;
   box-shadow: 3px 3px 10px grey;
-  border-radius: 20px;  
+  border-radius: 20px;
   background: radial-gradient(#3f87a6, rgb(61, 61, 240));
-}
+`;

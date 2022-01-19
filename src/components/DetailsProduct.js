@@ -1,5 +1,7 @@
 import React from "react";
-import "./DetailsProduct.css";
+//import "./DetailsProduct.css";
+import { GralButton, AddButton } from "./Button";
+import { DetailCardStyle, DetailContainer } from "./DetailCardStyle";
 
 const DetailsProduct = ({
   isOpen,
@@ -11,35 +13,34 @@ const DetailsProduct = ({
   const handleModalContainerClick = (e) => e.stopPropagation();
 
   return (
-    <div className={`product ${isOpen && "is-open"}`} onClick={closeCard}>
-      <div onClick={handleModalContainerClick}>
-        <button onClick={closeCard}>Volver</button>
+    <DetailContainer isOpen={isOpen} onClick={closeCard}>
+        <h2>te mostramos los productos que combinan muy bien con tu elección</h2>
+        <GralButton onClick={closeCard}>Volver</GralButton>
         {recommendedImage.map((imgRec) => {
           return (
-            <div className="product-container">
+            <DetailCardStyle >
               {product.map((prod) => {
                 return (
                   prod.product_id === imgRec && (
-                    <div>
+                    <div onClick={handleModalContainerClick}>
                       <h4>{prod.name}</h4>
                       <img
                         key={prod.product_id}
                         src={prod.image_url}
                         alt={prod.name}
                       ></img>
-                      <p>${prod.total_price}</p>
-                      <button onClick={() => sumHandleCart(prod)}>
+                      <h4>${prod.total_price}</h4>
+                      <AddButton add onClick={() => sumHandleCart(prod)}>
                         Agregar al carrito
-                      </button>
+                      </AddButton>
                     </div>
                   )
                 );
               })}
-            </div>
+            </DetailCardStyle>
           );
         })}
-      </div>
-    </div>
+    </DetailContainer>
   );
 };
 

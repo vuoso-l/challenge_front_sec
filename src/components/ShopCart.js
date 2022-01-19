@@ -1,4 +1,5 @@
 import React from "react";
+import { DeleteButton } from "./Button";
 
 const ShopCart = ({ elementCart, setElementCart }) => {
   const handleClickToEmpty = () => {
@@ -9,7 +10,9 @@ const ShopCart = ({ elementCart, setElementCart }) => {
   return (
     <div>
       <h3>contador compras: {elementCart.length}</h3>
-      <button onClick={handleClickToEmpty}>Vaciar</button>
+      <DeleteButton del onClick={handleClickToEmpty}>
+        Vaciar
+      </DeleteButton>
     </div>
   );
 };
