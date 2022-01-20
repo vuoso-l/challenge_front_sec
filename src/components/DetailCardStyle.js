@@ -1,17 +1,14 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { displayFlex } from "../styleAux/theme";
 
 const DetailContainer = styled.div`
+  ${displayFlex("", "column", "center", "center")};
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+`;
 
 const DetailCardStyle = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${displayFlex("flex", "column", "center", "center")};
   width: 90%;
   height: auto;
   padding: 15px;
@@ -19,10 +16,7 @@ const DetailCardStyle = styled.section`
   border-radius: 20px;
   background-color: white;
   div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    ${displayFlex("flex", "column", "center", "center")};
     width: 100%;
   }
   @media ${device.mobileM} {
@@ -41,4 +35,4 @@ const DetailCardStyle = styled.section`
   }
 `;
 
-export { DetailContainer, DetailCardStyle}
+export { DetailContainer, DetailCardStyle };

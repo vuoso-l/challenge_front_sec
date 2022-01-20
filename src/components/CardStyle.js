@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
-import { color } from "../styleAux/theme";
+import { color, displayFlex } from "../styleAux/theme";
 
 export const CardStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+${displayFlex("flex", "column", "center", "center")};
   max-width: 100%;
   width: 90%;
   padding: 20px 0px;

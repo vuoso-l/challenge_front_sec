@@ -1,10 +1,8 @@
 import styled from "styled-components";
+import { displayFlex } from "../styleAux/theme";
 
 const ShopCartStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${displayFlex("flex", "column", "center", "center")};
 `;
 
 export { ShopCartStyle };

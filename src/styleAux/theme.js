@@ -5,9 +5,9 @@ export const color = {
 
 export const displayFlex = (display, direction, justifyContent, alignItem) => {
     return `
-    display: ${display}
-    direction: ${direction}
-    justify-content: ${justifyContent}
-    align-item: ${alignItem}
+    display: ${display};
+    flex-direction: ${direction};
+    justify-content: ${justifyContent};
+    align-items: ${alignItem};
     `    
 }

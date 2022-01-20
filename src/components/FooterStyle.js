@@ -1,23 +1,17 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
-import { color } from "../styleAux/theme";
+import { color, displayFlex } from "../styleAux/theme";
 
 const FooterStyle = styled.footer`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${displayFlex("flex", "column", "center", "center")};
   background-color: ${color.bgPrimary};
   width: 100%;
   max-width: 100%;
   div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    ${displayFlex("flex", "column", "center", "flex-start")};
     width: 100%;
     ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      ${displayFlex("flex", "column", "center", "flex-start")};
       font-size: 16px;
       width: 100%;
       padding-bottom: 20px;

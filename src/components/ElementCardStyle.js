@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { displayFlex } from "../styleAux/theme";
 
 export const ElementCardStyle = styled.section`
-  display: ${({ isOpen }) => (!isOpen ? "flex" : "none")};
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${displayFlex("", "column", "center", "center")};
+  display: ${({ isOpen }) => (isOpen ? "none" : "flex")};
   width: 90%;
   height: auto;
   padding: 15px;

@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
-import { color } from "../styleAux/theme";
+import { color, displayFlex } from "../styleAux/theme";
 
 const HeaderStyle = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${displayFlex("flex", "row", "space-between", "center")};
   width: 100%;
   height: 150px;
   padding: 0px 20px;
