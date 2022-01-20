@@ -8,7 +8,6 @@ const SweetAlert = {
       icon: "error",
       confirmButtonColor: "#ff0000",
       confirmButtonText: "OK",
-      position: "top-end",
       toast: true,
     });
   },
@@ -20,7 +19,6 @@ const SweetAlert = {
         icon: "success",
         confirmButtonColor: "#3085d6",
         confirmButtonText: "OK",
-        position: "top-end",
         toast: true,
       });
   },
