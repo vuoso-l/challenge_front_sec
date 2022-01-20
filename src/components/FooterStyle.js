@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { color } from "../styleAux/theme";
 
 const FooterStyle = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(61, 61, 240);
+  background-color: ${color.bgPrimary};
   width: 100%;
   max-width: 100%;
   div {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { color } from "../styleAux/theme";
 
 export const CardStyle = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const CardStyle = styled.div`
   margin-top: 30px;
   box-shadow: 3px 3px 10px grey;
   border-radius: 20px;
-  background: radial-gradient(#3f87a6, rgb(61, 61, 240));
+  background: radial-gradient(${color.bgSecondary}, ${color.bgPrimary});
   @media ${device.tablet} {
     flex-direction: row;
     flex-wrap: wrap;

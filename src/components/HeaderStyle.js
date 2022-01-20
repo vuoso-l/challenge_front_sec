@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { color } from "../styleAux/theme";
 
 const HeaderStyle = styled.header`
   display: flex;
@@ -8,7 +9,7 @@ const HeaderStyle = styled.header`
   width: 100%;
   height: 150px;
   padding: 0px 20px;
-  background-color: rgb(61, 61, 240);
+  background-color: ${color.bgPrimary};
   img {
     width: 150px;
   }
