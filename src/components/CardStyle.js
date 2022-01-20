@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../deviceSize";
+import { device } from "../styleAux/deviceSize";
 
 export const CardStyle = styled.div`
   display: flex;

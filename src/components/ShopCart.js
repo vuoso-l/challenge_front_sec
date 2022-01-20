@@ -1,6 +1,6 @@
 import React from "react";
 import { H4ShopCart, DeleteButton } from "./BasicTagsStyle";
-import { imgShopCart, imgDeleteCart } from "../fontAwesoneIcon";
+import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import { ShopCartStyle } from "./ShopCartStyle";
 
 const ShopCart = ({ elementCart, setElementCart }) => {

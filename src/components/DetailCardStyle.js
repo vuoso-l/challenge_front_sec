@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../deviceSize";
+import { device } from "../styleAux/deviceSize";
 
 const DetailContainer = styled.div`
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};

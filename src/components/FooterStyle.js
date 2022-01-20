@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../deviceSize";
+import { device } from "../styleAux/deviceSize";
 
 const FooterStyle = styled.footer`
   display: flex;

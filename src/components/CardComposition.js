@@ -5,7 +5,7 @@ import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { ElementCardStyle } from "./ElementCardStyle";
 import { ElementCardImg, H4, AddButton, DeleteButton } from "./BasicTagsStyle";
-import { imgShopCart, imgDeleteCart } from "../fontAwesoneIcon";
+import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 
 const CardComposition = ({
   db,

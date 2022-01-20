@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../deviceSize";
+import { device } from "../styleAux/deviceSize";
 
 const H2 = styled.h2`
   text-shadow: 4px 4px 8px grey;

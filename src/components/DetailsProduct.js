@@ -1,7 +1,7 @@
 import React from "react";
 import { Img, H2, H4, GralButton, AddButton } from "./BasicTagsStyle";
 import { DetailCardStyle, DetailContainer } from "./DetailCardStyle";
-import { imgShopCart } from "../fontAwesoneIcon";
+import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 
 const DetailsProduct = ({
   isOpen,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../deviceSize";
+import { device } from "../styleAux/deviceSize";
 
 export const ElementCardStyle = styled.section`
   display: ${({ isOpen }) => (!isOpen ? "flex" : "none")};
