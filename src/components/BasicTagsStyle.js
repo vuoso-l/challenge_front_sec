@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
+import { color } from "../styleAux/theme";
 
-const H2 = styled.h2`
+export const H2 = styled.h2`
   text-shadow: 4px 4px 8px grey;
   font-size: 24px;
   text-align: center;
@@ -13,7 +14,7 @@ const H2 = styled.h2`
   }
 `;
 
-const H4 = styled.h4`
+export const H4 = styled.h4`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -26,7 +27,7 @@ const H4 = styled.h4`
   }
 `;
 
-const H4ShopCart = styled.h4`
+export const H4ShopCart = styled.h4`
   font-size: 20px;
   background-color: white;
   border-radius: 50%;
@@ -41,34 +42,34 @@ const H4ShopCart = styled.h4`
   }
 `;
 
-const Img = styled.img`
+export const Img = styled.img`
   width: 100%;
   height: 200px;
   @media ${device.mobileM} {
-      width: 80%;
+    width: 80%;
   }
   @media ${device.mobileL} {
-      width: 70%;
+    width: 70%;
   }
   @media ${device.laptop} {
-      width: 60%;
-      height: 250px;
+    width: 60%;
+    height: 250px;
   }
 `;
 
-const ElementCardImg = styled(Img)`
+export const ElementCardImg = styled(Img)`
   &:hover {
     cursor: pointer;
   }
 `;
 
-const GralButton = styled.button`
+export const GralButton = styled.button`
   border: 1px solid;
   border-radius: 10px;
   padding: 5px 15px;
   margin: 1px 0;
   color: white;
-  background: black;
+  background-color: black;
   font-size: 14px;
   text-align: center;
   &:hover {
@@ -82,21 +83,42 @@ const GralButton = styled.button`
   }
 `;
 
-const AddButton = styled(GralButton)`
-  background: #0000ffb0;
+export const AddButton = styled(GralButton)`
+  background-color: ${color.addBtn};
 `;
 
-const DeleteButton = styled(GralButton)`
-  background: red;
+export const DeleteButton = styled(GralButton)`
+  background-color: red;
 `;
 
-export {
-  H2,
-  H4,
-  H4ShopCart,
-  Img,
-  ElementCardImg,
-  GralButton,
-  AddButton,
-  DeleteButton,
-};
+export const SelectStyle = styled.select`
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid;
+  border-radius: 10px;
+  color: white;
+  background-color: ${color.addBtn};
+  @media ${device.tablet} {
+    font-size: 16px;
+  }
+  @media ${device.laptop} {
+    font-size: 20px;
+  }
+`;
+
+export const OptionStyle = styled.option`
+  font-size: 10px;
+  padding: 10px 0;
+  margin-top: 5px;
+  border: 1px solid;
+  border-radius: 10px;
+  color: white;
+  background-color: ${color.addBtn};
+  @media ${device.tablet} {
+    font-size: 12px;
+  }
+  @media ${device.laptop} {
+    font-size: 16px;
+  }
+`;
