@@ -3,8 +3,9 @@ import DetailsProduct from "./DetailsProduct";
 import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
-import { AddButton, DeleteButton } from "./Button";
 import { ElementCardStyle } from "./ElementCardStyle";
+import { ElementCardImg, H4, AddButton, DeleteButton } from "./BasicTagsStyle";
+import { imgShopCart, imgDeleteCart } from "../fontAwesoneIcon";
 
 const CardComposition = ({
   db,
@@ -51,26 +52,24 @@ const CardComposition = ({
       <>
         {filterDb.map((product) => {
           return (
-            <ElementCardStyle isOpen={isOpen}       
-              key={product.product_id}
-            >
-              <h4>{product.name}</h4>
+            <ElementCardStyle isOpen={isOpen} key={product.product_id}>
+              <H4>{product.name}</H4>
 
-              <img
+              <ElementCardImg
                 id={product.product_id}
                 onClick={openCard}
                 src={product.image_url}
                 alt={product.name}
-              ></img>
+              ></ElementCardImg>
 
-              <h4>${product.total_price}</h4>
+              <H4>${product.total_price}</H4>
 
               <div>
                 <AddButton add onClick={() => sumHandleCart(product)}>
-                  Agregar al carrito
+                  {imgShopCart}
                 </AddButton>
                 <DeleteButton del onClick={() => restHandleCart(product)}>
-                  Eliminar del carrito
+                  {imgDeleteCart}
                 </DeleteButton>
               </div>
             </ElementCardStyle>

@@ -3,15 +3,14 @@ import CardComposition from "./CardComposition";
 import SelectFilter from "./SelectFilter";
 import ShopCart from "./ShopCart";
 import Loader from "./Loader";
-import useLocalStorage from "../hooks/useLocalStorage";
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
 import { CardStyle } from "./CardStyle";
 import ErrorComponent from "./ErrorComponent";
+import { H2 } from "./BasicTagsStyle";
 
-const CardProduct = () => {
+const CardProduct = ({ elementCart, setElementCart }) => {
   const [categorySelected, setCategorySelected] = useState("all");
-  const [elementCart, setElementCart] = useLocalStorage("elementCart", []);
 
   const url = "http://localhost:3000/";
   const categoriesUrl = "categories";
@@ -49,8 +48,7 @@ const CardProduct = () => {
   } else {
     return (
       <main>
-        <ShopCart elementCart={elementCart} setElementCart={setElementCart} />
-        {false && <h2>Página de productos</h2>}
+        <H2>Nuestros productos</H2>
         <SelectFilter
           url={`${url}${categoriesUrl}`}
           handleChange={(e) => {
@@ -58,15 +56,16 @@ const CardProduct = () => {
           }}
         />
         <CardStyle>
-          {
-            !data ? (<CardComposition
+          {data ? (
+            <CardComposition
               db={data}
               categorySelected={categorySelected}
               sumHandleCart={sumHandleCart}
               restHandleCart={restHandleCart}
-            />) : <ErrorComponent />
-          }
-          
+            />
+          ) : (
+            <ErrorComponent />
+          )}
         </CardStyle>
       </main>
     );

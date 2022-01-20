@@ -1,5 +1,7 @@
 import React from "react";
-import { DeleteButton } from "./Button";
+import { H4ShopCart, DeleteButton } from "./BasicTagsStyle";
+import { imgShopCart, imgDeleteCart } from "../fontAwesoneIcon";
+import { ShopCartStyle } from "./ShopCartStyle";
 
 const ShopCart = ({ elementCart, setElementCart }) => {
   const handleClickToEmpty = () => {
@@ -8,12 +10,14 @@ const ShopCart = ({ elementCart, setElementCart }) => {
   };
 
   return (
-    <div>
-      <h3>contador compras: {elementCart.length}</h3>
+    <ShopCartStyle>
+      <H4ShopCart>
+        {imgShopCart} {elementCart.length}
+      </H4ShopCart>
       <DeleteButton del onClick={handleClickToEmpty}>
-        Vaciar
+        {imgDeleteCart}
       </DeleteButton>
-    </div>
+    </ShopCartStyle>
   );
 };
 
