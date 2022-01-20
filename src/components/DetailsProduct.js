@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, H2, H4, GralButton, AddButton } from "./BasicTagsStyle";
+import { Img, H4, GralButton, AddButton } from "./BasicTagsStyle";
 import { DetailCardStyle, DetailContainer } from "./DetailCardStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 
@@ -14,7 +14,6 @@ const DetailsProduct = ({
 
   return (
     <DetailContainer isOpen={isOpen} onClick={closeCard}>
-      <H2>te mostramos los productos que combinan muy bien con tu elección</H2>
       <GralButton onClick={closeCard}>Volver</GralButton>
       {recommendedImage.map((imgRec) => {
         return (

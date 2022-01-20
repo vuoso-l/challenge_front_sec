@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import CardComposition from "./CardComposition";
 import SelectFilter from "./SelectFilter";
-import ShopCart from "./ShopCart";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
 import { CardStyle } from "./CardStyle";
 import ErrorComponent from "./ErrorComponent";
-import { H2 } from "./BasicTagsStyle";
+import { H2, GralButton } from "./BasicTagsStyle";
 
 const CardProduct = ({ elementCart, setElementCart }) => {
   const [categorySelected, setCategorySelected] = useState("all");
+  const [isOpen, setIsOpen] = useState(false);
 
   const url = "http://localhost:3000/";
   const categoriesUrl = "categories";
@@ -41,6 +41,8 @@ const CardProduct = ({ elementCart, setElementCart }) => {
     }
   };
 
+  const closeCard = () => setIsOpen(false);
+
   if (error) {
     return SweetAlert.messageError(error);
   } else if (!isLoaded) {
@@ -48,13 +50,22 @@ const CardProduct = ({ elementCart, setElementCart }) => {
   } else {
     return (
       <main>
-        <H2>Nuestros productos</H2>
-        <SelectFilter
-          url={`${url}${categoriesUrl}`}
-          handleChange={(e) => {
-            setCategorySelected(e.target.value);
-          }}
-        />
+        {isOpen ? (
+          <H2>Productos que combinan muy bien con tu elección</H2>
+        ) : (
+          <H2>Nuestros productos</H2>
+        )}
+        {isOpen ? (
+          <GralButton onClick={closeCard}>Volver</GralButton>
+        ) : (
+          <SelectFilter
+            url={`${url}${categoriesUrl}`}
+            handleChange={(e) => {
+              setCategorySelected(e.target.value);
+            }}
+          />
+        )}
+
         <CardStyle>
           {data ? (
             <CardComposition
@@ -62,6 +73,9 @@ const CardProduct = ({ elementCart, setElementCart }) => {
               categorySelected={categorySelected}
               sumHandleCart={sumHandleCart}
               restHandleCart={restHandleCart}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              closeCard={closeCard}
             />
           ) : (
             <ErrorComponent />

@@ -12,8 +12,10 @@ const CardComposition = ({
   categorySelected,
   sumHandleCart,
   restHandleCart,
+  isOpen,
+  setIsOpen,
+  closeCard,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [recommendedImage, setRecommendedImage] = useState([]);
 
   const url = "http://localhost:3000/";
@@ -28,9 +30,7 @@ const CardComposition = ({
         e.target.id === rec.product_id &&
         setRecommendedImage(rec.recommendations)
     );
-  };
-
-  const closeCard = () => setIsOpen(false);
+  };  
 
   let filterDb;
   if (categorySelected === "all" || categorySelected === "") {
