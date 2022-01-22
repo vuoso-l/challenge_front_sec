@@ -16,8 +16,8 @@ const SelectFilter = ({ url, handleChange }) => {
   } else {
     return (
       <>
+        <label htmlFor={id}>Elige una categoría</label>
         <SelectStyle name={id} id={id} onChange={handleChange}>
-          <OptionStyle value="">Elige una categoría</OptionStyle>
           <OptionStyle value="all">Ver todas las categorías</OptionStyle>
           {data &&
             data.map((el) => (
