@@ -33,7 +33,7 @@ const CardComposition = ({
   };  
 
   let filterDb;
-  if (categorySelected === "all" || categorySelected === "") {
+  if (categorySelected === "all") {
     filterDb = db.filter((prod) => prod.categories !== categorySelected);
   } else if (categorySelected !== "all") {
     filterDb = db.filter(
@@ -55,12 +55,21 @@ const CardComposition = ({
             <ElementCardStyle isOpen={isOpen} key={product.product_id}>
               <H4>{product.name}</H4>
 
-              <ElementCardImg
-                id={product.product_id}
-                onClick={openCard}
-                src={product.image_url}
-                alt={product.name}
-              ></ElementCardImg>
+              {product.image_url ? (
+                <ElementCardImg
+                  id={product.product_id}
+                  onClick={openCard}
+                  src={product.image_url}
+                  alt={product.name}
+                ></ElementCardImg>
+              ) : (
+                <ElementCardImg
+                  id={product.product_id}
+                  onClick={openCard}
+                  src="//cdn.shopify.com/s/files/1/0254/2947/5433/t/12/assets/new_logo-black.svg?v=15514233714370248417?nocache=0.4027801373597353"
+                  alt="Logo"
+                ></ElementCardImg>
+              )}
 
               <H4>${product.total_price}</H4>
 
