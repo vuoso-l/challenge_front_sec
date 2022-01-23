@@ -5,6 +5,7 @@ import { displayFlex } from "../styleAux/theme";
 const DetailContainer = styled.div`
   ${displayFlex("", "column", "center", "center")};
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  width: 100%;
 `;
 
 const DetailCardStyle = styled.section`
