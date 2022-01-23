@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, H4, AddButton } from "./BasicTagsStyle";
+import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
 import { DetailsProductStyle, DetailsProductContainer } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 
@@ -21,12 +21,12 @@ const DetailsProduct = ({
               return (
                 prod.product_id === imgRec && (
                   <div onClick={handleModalContainerClick} key={prod.product_id}>
-                    <H4>{prod.name}</H4>
-                    <Img                    
+                    <H4Style>{prod.name}</H4Style>
+                    <ImgStyle                    
                       src={prod.image_url}
                       alt={prod.name}
-                    ></Img>
-                    <H4>${prod.total_price}</H4>
+                    ></ImgStyle>
+                    <H4Style>${prod.total_price}</H4Style>
                     <AddButton add onClick={() => sumHandleCart(prod)}>
                       {imgShopCart}
                     </AddButton>

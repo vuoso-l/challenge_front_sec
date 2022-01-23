@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
 import { color, displayFlex } from "../styleAux/theme";
 
-const HeaderStyle = styled.header`
+export const HeaderStyle = styled.header`
   ${displayFlex("flex", "row", "space-between", "center")};
   width: 100%;
   height: 150px;
@@ -17,5 +17,3 @@ const HeaderStyle = styled.header`
     }
   }
 `;
-
-export { HeaderStyle };

@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { ElementCardStyle } from "./ElementCardStyle";
-import { ElementCardImg, H4, AddButton, DeleteButton } from "./BasicTagsStyle";
+import { ElementCardImg, H4Style, AddButton, DeleteButton } from "./BasicTagsStyle";
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 
 const CardComposition = ({
@@ -53,7 +53,7 @@ const CardComposition = ({
         {filterDb.map((product) => {
           return (
             <ElementCardStyle isOpen={isOpen} key={product.product_id}>
-              <H4>{product.name}</H4>
+              <H4Style>{product.name}</H4Style>
 
               {product.image_url ? (
                 <ElementCardImg
@@ -71,7 +71,7 @@ const CardComposition = ({
                 ></ElementCardImg>
               )}
 
-              <H4>${product.total_price}</H4>
+              <H4Style>${product.total_price}</H4Style>
 
               <div>
                 <AddButton add onClick={() => sumHandleCart(product)}>

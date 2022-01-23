@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
 import { color } from "../styleAux/theme";
 
-export const H2 = styled.h2`
+export const H2Style = styled.h2`
   text-shadow: 4px 4px 8px grey;
   font-size: 24px;
   text-align: center;
@@ -14,7 +14,7 @@ export const H2 = styled.h2`
   }
 `;
 
-export const H4 = styled.h4`
+export const H4Style = styled.h4`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -42,7 +42,7 @@ export const H4ShopCart = styled.h4`
   }
 `;
 
-export const Img = styled.img`
+export const ImgStyle = styled.img`
   width: 100%;
   height: 200px;
   @media ${device.mobileM} {
@@ -57,7 +57,7 @@ export const Img = styled.img`
   }
 `;
 
-export const ElementCardImg = styled(Img)`
+export const ElementCardImg = styled(ImgStyle)`
   &:hover {
     cursor: pointer;
   }

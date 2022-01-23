@@ -6,7 +6,7 @@ import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
 import { CardProductStyle } from "./CardProductStyle";
 import ErrorComponent from "./ErrorComponent";
-import { H2, GralButton } from "./BasicTagsStyle";
+import { H2Style, GralButton } from "./BasicTagsStyle";
 
 const CardProduct = ({ elementCart, setElementCart }) => {
   const [categorySelected, setCategorySelected] = useState("all");
@@ -51,9 +51,9 @@ const CardProduct = ({ elementCart, setElementCart }) => {
     return (
       <main>
         {isOpen ? (
-          <H2>Productos que combinan muy bien con tu elección</H2>
+          <H2Style>Productos que combinan muy bien con tu elección</H2Style>
         ) : (
-          <H2>Nuestros productos</H2>
+          <H2Style>Nuestros productos</H2Style>
         )}
         {isOpen ? (
           <GralButton onClick={closeCard}>Volver</GralButton>
