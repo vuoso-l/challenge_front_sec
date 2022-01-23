@@ -18,7 +18,7 @@ const CardProduct = ({ elementCart, setElementCart }) => {
 
   const { data, error, isLoaded } = useFetch(`${url}${productsUrl}`);
 
-  const sumHandleCart = (product) => {
+  const addHandleCart = (product) => {
     setElementCart([...elementCart, product]);
     SweetAlert.messageOk(
       "Producto agregado al carrito!",
@@ -26,7 +26,7 @@ const CardProduct = ({ elementCart, setElementCart }) => {
     );
   };
 
-  const restHandleCart = (product) => {
+  const deleteHandleCart = (product) => {
     const index = elementCart.findIndex(
       (elem) => elem.product_id === product.product_id
     );
@@ -71,8 +71,8 @@ const CardProduct = ({ elementCart, setElementCart }) => {
             <ElementCard
               db={data}
               categorySelected={categorySelected}
-              sumHandleCart={sumHandleCart}
-              restHandleCart={restHandleCart}
+              addHandleCart={addHandleCart}
+              deleteHandleCart={deleteHandleCart}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
               closeCard={closeCard}

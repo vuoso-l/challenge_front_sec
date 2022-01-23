@@ -10,8 +10,8 @@ import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 const CardComposition = ({
   db,
   categorySelected,
-  sumHandleCart,
-  restHandleCart,
+  addHandleCart,
+  deleteHandleCart,
   isOpen,
   setIsOpen,
   closeCard,
@@ -74,10 +74,10 @@ const CardComposition = ({
               <H4Style>${product.total_price}</H4Style>
 
               <div>
-                <AddButton add onClick={() => sumHandleCart(product)}>
+                <AddButton add onClick={() => addHandleCart(product)}>
                   {imgShopCart}
                 </AddButton>
-                <DeleteButton del onClick={() => restHandleCart(product)}>
+                <DeleteButton del onClick={() => deleteHandleCart(product)}>
                   {imgDeleteCart}
                 </DeleteButton>
               </div>
@@ -89,7 +89,7 @@ const CardComposition = ({
           closeCard={closeCard}
           product={db}
           recommendedImage={recommendedImage}
-          sumHandleCart={sumHandleCart}
+          addHandleCart={addHandleCart}
         />
       </>
     );

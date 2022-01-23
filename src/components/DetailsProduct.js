@@ -8,9 +8,9 @@ const DetailsProduct = ({
   closeCard,
   product,
   recommendedImage,
-  sumHandleCart,
+  addHandleCart,
 }) => {
-  const handleModalContainerClick = (e) => e.stopPropagation();
+  const handleContainerClick = (e) => e.stopPropagation();
 
   return (
     <DetailsProductContainer isOpen={isOpen} onClick={closeCard}>
@@ -20,14 +20,14 @@ const DetailsProduct = ({
             {product.map((prod) => {
               return (
                 prod.product_id === imgRec && (
-                  <div onClick={handleModalContainerClick} key={prod.product_id}>
+                  <div onClick={handleContainerClick} key={prod.product_id}>
                     <H4Style>{prod.name}</H4Style>
                     <ImgStyle                    
                       src={prod.image_url}
                       alt={prod.name}
                     ></ImgStyle>
                     <H4Style>${prod.total_price}</H4Style>
-                    <AddButton add onClick={() => sumHandleCart(prod)}>
+                    <AddButton add onClick={() => addHandleCart(prod)}>
                       {imgShopCart}
                     </AddButton>
                   </div>
