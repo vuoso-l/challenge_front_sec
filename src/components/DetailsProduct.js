@@ -16,14 +16,13 @@ const DetailsProduct = ({
     <DetailContainer isOpen={isOpen} onClick={closeCard}>
       {recommendedImage.map((imgRec) => {
         return (
-          <DetailCardStyle>
+          <DetailCardStyle key={imgRec}>
             {product.map((prod) => {
               return (
                 prod.product_id === imgRec && (
-                  <div onClick={handleModalContainerClick}>
+                  <div onClick={handleModalContainerClick} key={prod.product_id}>
                     <H4>{prod.name}</H4>
-                    <Img
-                      key={prod.product_id}
+                    <Img                    
                       src={prod.image_url}
                       alt={prod.name}
                     ></Img>
