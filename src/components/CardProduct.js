@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CardComposition from "./CardComposition";
+import ElementCard from "./ElementCard";
 import SelectFilter from "./SelectFilter";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
-import { CardStyle } from "./CardStyle";
+import { CardProductStyle } from "./CardProductStyle";
 import ErrorComponent from "./ErrorComponent";
 import { H2, GralButton } from "./BasicTagsStyle";
 
@@ -66,9 +66,9 @@ const CardProduct = ({ elementCart, setElementCart }) => {
           />
         )}
 
-        <CardStyle>
+        <CardProductStyle>
           {data ? (
-            <CardComposition
+            <ElementCard
               db={data}
               categorySelected={categorySelected}
               sumHandleCart={sumHandleCart}
@@ -80,7 +80,7 @@ const CardProduct = ({ elementCart, setElementCart }) => {
           ) : (
             <ErrorComponent />
           )}
-        </CardStyle>
+        </CardProductStyle>
       </main>
     );
   }

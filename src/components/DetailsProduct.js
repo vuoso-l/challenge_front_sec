@@ -1,6 +1,6 @@
 import React from "react";
 import { Img, H4, AddButton } from "./BasicTagsStyle";
-import { DetailCardStyle, DetailContainer } from "./DetailCardStyle";
+import { DetailsProductStyle, DetailsProductContainer } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 
 const DetailsProduct = ({
@@ -13,10 +13,10 @@ const DetailsProduct = ({
   const handleModalContainerClick = (e) => e.stopPropagation();
 
   return (
-    <DetailContainer isOpen={isOpen} onClick={closeCard}>
+    <DetailsProductContainer isOpen={isOpen} onClick={closeCard}>
       {recommendedImage.map((imgRec) => {
         return (
-          <DetailCardStyle key={imgRec}>
+          <DetailsProductStyle key={imgRec}>
             {product.map((prod) => {
               return (
                 prod.product_id === imgRec && (
@@ -34,10 +34,10 @@ const DetailsProduct = ({
                 )
               );
             })}
-          </DetailCardStyle>
+          </DetailsProductStyle>
         );
       })}
-    </DetailContainer>
+    </DetailsProductContainer>
   );
 };
 

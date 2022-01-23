@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { device } from "../styleAux/deviceSize";
 import { displayFlex } from "../styleAux/theme";
 
-const DetailContainer = styled.div`
+export const DetailsProductContainer = styled.div`
   ${displayFlex("", "column", "center", "center")};
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   width: 100%;
 `;
 
-const DetailCardStyle = styled.section`
+export const DetailsProductStyle = styled.section`
   ${displayFlex("flex", "column", "center", "center")};
   width: 90%;
   height: auto;
@@ -35,5 +35,3 @@ const DetailCardStyle = styled.section`
     width: 40%;
   }
 `;
-
-export { DetailContainer, DetailCardStyle };
