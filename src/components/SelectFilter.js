@@ -18,6 +18,7 @@ const SelectFilter = ({ url, handleChange }) => {
       <>
         <label htmlFor={id}>Elige una categoría</label>
         <SelectStyle name={id} id={id} onChange={handleChange}>
+          <OptionStyle value="">Categorías</OptionStyle>
           <OptionStyle value="all">Ver todas las categorías</OptionStyle>
           {data &&
             data.map((el) => (
