@@ -33,13 +33,13 @@ const CardComposition = ({
   };  
 
   let filterDb;
-  if (categorySelected === "all") {
+  if (categorySelected === "all" || categorySelected === "") {
     filterDb = db.filter((prod) => prod.categories !== categorySelected);
   } else if (categorySelected !== "all") {
     filterDb = db.filter(
-      (prod) =>
-        prod.categories[0] === categorySelected ||
-        prod.categories[1] === categorySelected
+      (prod) => prod.categories !== undefined &&
+        (prod.categories[0] === categorySelected ||
+        prod.categories[1] === categorySelected)
     );
   }
 
@@ -87,7 +87,7 @@ const CardComposition = ({
         <DetailsProduct
           isOpen={isOpen}
           closeCard={closeCard}
-          product={filterDb}
+          product={db}
           recommendedImage={recommendedImage}
           sumHandleCart={sumHandleCart}
         />
