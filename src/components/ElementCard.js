@@ -4,8 +4,14 @@ import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { ElementCardStyle } from "./ElementCardStyle";
-import { ElementCardImg, H4Style, AddButton, DeleteButton } from "./BasicTagsStyle";
+import {
+  ElementCardImg,
+  H4Style,
+  AddButton,
+  DeleteButton,
+} from "./BasicTagsStyle";
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
+import ErrorComponent from "./ErrorComponent";
 
 const CardComposition = ({
   db,
@@ -30,21 +36,27 @@ const CardComposition = ({
         e.target.id === rec.product_id &&
         setRecommendedImage(rec.recommendations)
     );
-  };  
+  };
 
   let filterDb;
   if (categorySelected === "all" || categorySelected === "") {
     filterDb = db.filter((prod) => prod.categories !== categorySelected);
   } else if (categorySelected !== "all") {
     filterDb = db.filter(
-      (prod) => prod.categories !== undefined &&
+      (prod) =>
+        prod.categories !== undefined &&
         (prod.categories[0] === categorySelected ||
-        prod.categories[1] === categorySelected)
+          prod.categories[1] === categorySelected)
     );
   }
 
   if (error) {
-    return SweetAlert.messageError(error);
+    return (
+      <div>
+        {SweetAlert.messageError(error)}
+        <ErrorComponent />
+      </div>
+    );
   } else if (!isLoaded) {
     return <Loader />;
   } else {
