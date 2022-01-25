@@ -37,4 +37,12 @@ describe("Test ElementCard", () => {
     component = render(<ElementCard db={db} />)
     expect(component).toBeDefined();
   });
+  test('Render error component', async () => {
+    component = render(<ElementCard db={db} />)
+
+    expect(screen.queryByText(/Inconvenientes técnicos/)).toBeNull();
+
+    expect(await screen.findByText(/Inconvenientes técnicos/)).toBeInTheDocument();
+    expect(await screen.findByAltText(/Logo/)).toBeInTheDocument();
+  });
 });
