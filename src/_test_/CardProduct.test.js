@@ -1,14 +1,14 @@
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
-import { render } from "@testing-library/react";
-import CardProduct from "../components/ElementCard";
+import '@testing-library/jest-dom'
+import { render, screen } from "@testing-library/react";
+import CardProduct from "../components/CardProduct";
 
 let component;
 let db = [];
 describe("Test CardProduct", () => {
   test("Render content if db = []", () => {    
     component = render(<CardProduct db={db} />)
-    expect(component).toBeDefined();
+    expect(component).toBeDefined();    
   });
   test("Render content if db have one object", () => {
     db = [
