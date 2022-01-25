@@ -3,6 +3,7 @@ import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { SelectStyle, OptionStyle } from "./BasicTagsStyle";
+import ErrorComponent from "./ErrorComponent";
 
 const SelectFilter = ({ url, handleChange }) => {
   const { data, error, isLoaded } = useFetch(url);
@@ -10,7 +11,12 @@ const SelectFilter = ({ url, handleChange }) => {
   let id = "category";
 
   if (error) {
-    return SweetAlert.messageError(error);
+    return (
+      <div>
+        {SweetAlert.messageError(error)}
+        <ErrorComponent />
+      </div>
+    );
   } else if (!isLoaded) {
     return <Loader />;
   } else {

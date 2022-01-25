@@ -44,30 +44,35 @@ const CardProduct = ({ elementCart, setElementCart }) => {
   const closeCard = () => setIsOpen(false);
 
   if (error) {
-    return SweetAlert.messageError(error);
+    return (
+      <div>
+        {SweetAlert.messageError(error)}
+        <ErrorComponent />
+      </div>
+    );
   } else if (!isLoaded) {
     return <Loader />;
   } else {
     return (
       <main>
-        {isOpen ? (
-          <H2Style>Productos que combinan muy bien con tu elección</H2Style>
-        ) : (
+        {!isOpen ? (
           <H2Style>Nuestros productos</H2Style>
-        )}
-        {isOpen ? (
-          <GralButton onClick={closeCard}>Volver</GralButton>
         ) : (
+          <H2Style>Productos que combinan muy bien con tu elección</H2Style>
+        )}
+        {!isOpen ? (
           <SelectFilter
             url={`${url}${categoriesUrl}`}
             handleChange={(e) => {
               setCategorySelected(e.target.value);
             }}
           />
+        ) : (
+          <GralButton onClick={closeCard}>Volver</GralButton>
         )}
 
         <CardProductStyle>
-          {data ? (
+          {data && (
             <ElementCard
               db={data}
               categorySelected={categorySelected}
@@ -77,8 +82,6 @@ const CardProduct = ({ elementCart, setElementCart }) => {
               setIsOpen={setIsOpen}
               closeCard={closeCard}
             />
-          ) : (
-            <ErrorComponent />
           )}
         </CardProductStyle>
       </main>
