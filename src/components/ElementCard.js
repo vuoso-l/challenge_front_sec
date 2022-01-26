@@ -68,7 +68,7 @@ const CardComposition = ({
               <H4Style>{product.name}</H4Style>
 
               {product.image_url ? (
-                <ElementCardImg
+                <ElementCardImg data-testid="img-openCard"
                   id={product.product_id}
                   onClick={openCard}
                   src={product.image_url}
@@ -86,10 +86,10 @@ const CardComposition = ({
               <H4Style>${product.total_price}</H4Style>
 
               <div>
-                <AddButton add onClick={() => addHandleCart(product)}>
+                <AddButton add data-testid="btn-addCart" onClick={() => addHandleCart(product)}>
                   {imgShopCart}
                 </AddButton>
-                <DeleteButton del onClick={() => deleteHandleCart(product)}>
+                <DeleteButton del data-testid="btn-delCart" onClick={() => deleteHandleCart(product)}>
                   {imgDeleteCart}
                 </DeleteButton>
               </div>

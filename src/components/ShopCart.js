@@ -11,10 +11,10 @@ const ShopCart = ({ elementCart, setElementCart }) => {
 
   return (
     <ShopCartStyle>
-      <H4ShopCart>
+      <H4ShopCart data-testid="counter-elementCart">
         {imgShopCart} {elementCart.length}
       </H4ShopCart>
-      <DeleteButton del onClick={handleClickToEmpty}>
+      <DeleteButton del data-testid="button-del" onClick={handleClickToEmpty}>
         {imgDeleteCart}
       </DeleteButton>
     </ShopCartStyle>

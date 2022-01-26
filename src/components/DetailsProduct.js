@@ -27,7 +27,7 @@ const DetailsProduct = ({
                       alt={prod.name}
                     ></ImgStyle>
                     <H4Style>${prod.total_price}</H4Style>
-                    <AddButton add onClick={() => addHandleCart(prod)}>
+                    <AddButton add data-testid="btn-addCart" onClick={() => addHandleCart(prod)}>
                       {imgShopCart}
                     </AddButton>
                   </div>

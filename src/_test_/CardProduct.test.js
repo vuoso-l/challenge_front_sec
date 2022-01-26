@@ -1,16 +1,19 @@
 import React from "react";
 import '@testing-library/jest-dom'
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import CardProduct from "../components/CardProduct";
 
 let component;
 let db = [];
+let setElementCart = jest.fn();
 describe("Test CardProduct", () => {
   test("Render content if db = []", () => {    
     component = render(<CardProduct db={db} />)
-    expect(component).toBeDefined();    
+    expect(component).toBeDefined();
+    expect(screen.queryByText(/Inconvenientes técnicos/)).toBeNull();  
   });
   test("Render content if db have one object", () => {
+    
     db = [
       {
         product_id: "4854058319917",
@@ -34,13 +37,11 @@ describe("Test CardProduct", () => {
         price_per_litre: "201",
       },
     ];
-    component = render(<CardProduct db={db} />)
+    component = render(<CardProduct elementCart={db} setElementCart={setElementCart} />)
     expect(component).toBeDefined();
   });
   test('Render error component', async () => {
-    component = render(<CardProduct db={db} />)
-
-    expect(screen.queryByText(/Inconvenientes técnicos/)).toBeNull();
+    component = render(<CardProduct />)
 
     expect(await screen.findByText(/Inconvenientes técnicos/)).toBeInTheDocument();
     expect(await screen.findByAltText(/Logo/)).toBeInTheDocument();

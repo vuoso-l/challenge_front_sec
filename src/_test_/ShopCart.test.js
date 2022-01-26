@@ -1,12 +1,12 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import ShopCart from "../components/ShopCart";
 
 describe("Test ShopCart", () => {
   test("Render content if elementCart = []", () => {
     const product = [];
-    expect(render(<ShopCart elementCart={product} />)).toBeDefined();
+    expect(render(<ShopCart elementCart={product} />)).toBeDefined();    
   });
   test("Render content if elementCart have one object", () => {
     const product = [
@@ -32,6 +32,10 @@ describe("Test ShopCart", () => {
         price_per_litre: "201",
       },
     ];
-    expect(render(<ShopCart elementCart={product} />)).toBeDefined();
+    const setElementCart = jest.fn();
+    expect(render(<ShopCart elementCart={product} setElementCart={setElementCart} />)).toBeDefined();
+    fireEvent.click(screen.getByTestId('button-del'))
+
+    expect(screen.getByTestId('counter-elementCart')).toHaveTextContent('1')
   });  
 });
