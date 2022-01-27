@@ -13,7 +13,7 @@ import {
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import ErrorComponent from "./ErrorComponent";
 
-const CardComposition = ({
+const ElementCard = ({
   db,
   categorySelected,
   addHandleCart,
@@ -108,4 +108,4 @@ const CardComposition = ({
   }
 };
 
-export default CardComposition;
+export default ElementCard;
