@@ -8,9 +8,10 @@ let db = [];
 let categorySelected = ["gaseosas"];
 const addHandleCart = jest.fn();
 const deleteHandleCart = jest.fn();
-let isOpen = true;
+let isOpen = false;
 const setIsOpen = jest.fn();
 const closeCard = jest.fn();
+
 describe("Test ElementCard", () => {
   test("Render content if db = []", () => {
     component = render(<ElementCard db={db} />);
@@ -86,7 +87,15 @@ describe("Test ElementCard", () => {
         price_per_litre: "201",
       },
     ];
-    component = render(<ElementCard db={db} setIsOpen={setIsOpen} />);
+    component = render(
+      <ElementCard
+        db={db}
+        addHandleCart={addHandleCart}
+        deleteHandleCart={deleteHandleCart}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+    );
 
     fireEvent.click(await screen.findByTestId("img-openCard"));
   });
@@ -114,7 +123,14 @@ describe("Test ElementCard", () => {
         price_per_litre: "201",
       },
     ];
-    component = render(<ElementCard db={db} addHandleCart={addHandleCart} />);
+    component = render(
+      <ElementCard
+        db={db}
+        isOpen={isOpen}
+        closeCard={closeCard}
+        addHandleCart={addHandleCart}
+      />
+    );
 
     fireEvent.click(await screen.findByTestId("btn-addCart"));
   });
