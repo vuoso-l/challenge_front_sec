@@ -91,7 +91,7 @@ describe("Test DetailProduct", () => {
     const recImage = ["4854059663405"];
     const addHandleCart = jest.fn();
     const isOpen = true;
-    const closeCard = false;
+    const closeCard = jest.fn();
 
     render(<DetailsProduct isOpen={isOpen} closeCard={closeCard} recommendedImage={recImage} product={product} addHandleCart={addHandleCart} />);
     const btn = await screen.findByTestId('btn-addCart');
