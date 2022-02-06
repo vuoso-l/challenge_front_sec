@@ -14,16 +14,28 @@ export const H2Style = styled.h2`
   }
 `;
 
+export const H3Style = styled.h3`
+  text-shadow: 2px 2px 4px grey;
+  font-size: 18px;
+  text-align: center;
+  @media ${device.tablet} {
+    font-size: 20px;
+  }
+  @media ${device.laptop} {
+    font-size: 22px;
+  }
+`;
+
 export const H4Style = styled.h4`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   padding-bottom: 10px;
   @media ${device.tablet} {
-    font-size: 20px;
+    font-size: 18px;
   }
   @media ${device.laptop} {
-    font-size: 22px;
+    font-size: 20px;
   }
 `;
 
@@ -34,6 +46,9 @@ export const H4ShopCart = styled.h4`
   text-align: center;
   padding: 5px;
   margin-bottom: 5px;
+  &:hover {
+    cursor: pointer;
+  }
   @media ${device.tablet} {
     font-size: 22px;
   }

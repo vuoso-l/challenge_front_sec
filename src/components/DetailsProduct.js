@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
 import {
   DetailsProductStyle,
   DetailsProductContainer,
 } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
+import ElementCartContext from "../context/ElementCartContext";
+import IsOpenContext from "../context/IsOpenContext";
 
-const DetailsProduct = ({
-  isOpen,
-  closeCard,
-  product,
-  recommendedImage,
-  addHandleCart,
-}) => {
+const DetailsProduct = ({ product, recommendedImage }) => {
+  const { addHandleCart } = useContext(ElementCartContext);
+  const { isOpen, closeCard } = useContext(IsOpenContext);
   const handleContainerClick = (e) => e.stopPropagation();
 
   return (

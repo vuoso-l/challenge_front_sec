@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DetailsProduct from "./DetailsProduct";
 import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
@@ -6,25 +6,22 @@ import SweetAlert from "../helpers/SweetAlert";
 import { ElementCardStyle } from "./ElementCardStyle";
 import {
   ElementCardImg,
+  H3Style,
   H4Style,
   AddButton,
   DeleteButton,
 } from "./BasicTagsStyle";
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import ErrorComponent from "./ErrorComponent";
+import ElementCartContext from "../context/ElementCartContext";
+import IsOpenContext from "../context/IsOpenContext";
 
-const ElementCard = ({
-  db,
-  categorySelected,
-  addHandleCart,
-  deleteHandleCart,
-  isOpen,
-  setIsOpen,
-  closeCard,
-}) => {
+const ElementCard = ({ db, categorySelected }) => {
+  const { isOpen, setIsOpen } = useContext(IsOpenContext);
+  const { addHandleCart, deleteHandleCart } = useContext(ElementCartContext);
   const [recommendedImage, setRecommendedImage] = useState([]);
 
-  const url = "http://localhost:3000/";
+  const url = "http://localhost:5000/";
   const recommendationUrl = "recommendations";
   const { data, error, isLoaded } = useFetch(`${url}${recommendationUrl}`);
 
@@ -65,10 +62,12 @@ const ElementCard = ({
         {filterDb.map((product) => {
           return (
             <ElementCardStyle isOpen={isOpen} key={product.product_id}>
-              <H4Style>{product.name}</H4Style>
+
+              <H3Style>{product.name}</H3Style>
 
               {product.image_url ? (
-                <ElementCardImg data-testid="img-openCard"
+                <ElementCardImg
+                  data-testid="img-openCard"
                   id={product.product_id}
                   onClick={openCard}
                   src={product.image_url}
@@ -86,23 +85,25 @@ const ElementCard = ({
               <H4Style>${product.total_price}</H4Style>
 
               <div>
-                <AddButton add data-testid="btn-addCart" onClick={() => addHandleCart(product)}>
+                <AddButton
+                  add
+                  data-testid="btn-addCart"
+                  onClick={() => addHandleCart(product)}
+                >
                   {imgShopCart}
                 </AddButton>
-                <DeleteButton del data-testid="btn-delCart" onClick={() => deleteHandleCart(product)}>
+                <DeleteButton
+                  del
+                  data-testid="btn-delCart"
+                  onClick={() => deleteHandleCart(product)}
+                >
                   {imgDeleteCart}
                 </DeleteButton>
               </div>
             </ElementCardStyle>
           );
         })}
-        <DetailsProduct
-          isOpen={isOpen}
-          closeCard={closeCard}
-          product={db}
-          recommendedImage={recommendedImage}
-          addHandleCart={addHandleCart}
-        />
+        <DetailsProduct product={db} recommendedImage={recommendedImage} />
       </>
     );
   }

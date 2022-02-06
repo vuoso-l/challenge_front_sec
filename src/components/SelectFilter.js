@@ -5,8 +5,10 @@ import SweetAlert from "../helpers/SweetAlert";
 import { SelectStyle, OptionStyle } from "./BasicTagsStyle";
 import ErrorComponent from "./ErrorComponent";
 
-const SelectFilter = ({ url, handleChange }) => {
-  const { data, error, isLoaded } = useFetch(url);
+const SelectFilter = ({ handleChange }) => {
+  const url = "http://localhost:5000/";
+  const categoriesUrl = "categories";
+  const { data, error, isLoaded } = useFetch(`${url}${categoriesUrl}`);
 
   let id = "category";
 
@@ -23,7 +25,12 @@ const SelectFilter = ({ url, handleChange }) => {
     return (
       <>
         <label htmlFor={id}>Elige una categoría</label>
-        <SelectStyle data-testid="select" name={id} id={id} onChange={handleChange}>
+        <SelectStyle
+          data-testid="select"
+          name={id}
+          id={id}
+          onChange={handleChange}
+        >
           <OptionStyle value="">Categorías</OptionStyle>
           <OptionStyle value="all">Ver todas las categorías</OptionStyle>
           {data &&
