@@ -16,26 +16,26 @@ export const H2Style = styled.h2`
 
 export const H3Style = styled.h3`
   text-shadow: 2px 2px 4px grey;
-  font-size: 18px;
+  font-size: 12px;
   text-align: center;
   @media ${device.tablet} {
-    font-size: 20px;
+    font-size: 14px;
   }
   @media ${device.laptop} {
-    font-size: 22px;
+    font-size: 16px;
   }
 `;
 
 export const H4Style = styled.h4`
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   text-align: center;
   padding-bottom: 10px;
   @media ${device.tablet} {
-    font-size: 18px;
+    font-size: 14px;
   }
   @media ${device.laptop} {
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 
@@ -58,18 +58,9 @@ export const H4ShopCart = styled.h4`
 `;
 
 export const ImgStyle = styled.img`
-  width: 100%;
-  height: 200px;
-  @media ${device.mobileM} {
-    width: 80%;
-  }
-  @media ${device.mobileL} {
-    width: 70%;
-  }
-  @media ${device.laptop} {
-    width: 60%;
-    height: 250px;
-  }
+  width: 70%;
+  height: auto;
+  padding: 10px 0px;
 `;
 
 export const ElementCardImg = styled(ImgStyle)`
@@ -85,16 +76,16 @@ export const GralButton = styled.button`
   margin: 1px 0;
   color: white;
   background-color: black;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   &:hover {
     cursor: pointer;
   }
   @media ${device.tablet} {
-    font-size: 16px;
+    font-size: 14px;
   }
   @media ${device.laptop} {
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 

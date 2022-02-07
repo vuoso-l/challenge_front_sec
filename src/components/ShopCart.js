@@ -6,20 +6,25 @@ import ElementCartContext from "../context/ElementCartContext";
 import Cart from "./Cart";
 
 const ShopCart = () => {
-  const { elementCart, handleClickToEmpty } = useContext(ElementCartContext);
-  const [open, setOpen] = useState(false);
-  const openCart = () => setOpen(true);
-  const closeCart = () => setOpen(false);
+  const { elementCart, handleClickToEmpty } =
+    useContext(ElementCartContext) || [];
+  const [openCart, setOpenCart] = useState(false);
+  const handleCart = () => setOpenCart(!openCart);
+
+  const productsQuantity = elementCart.map(
+    (item) => item.quantity > 0 && item.quantity
+  );
+  const totalProducts = productsQuantity.reduce((a, b) => a + b, 0);
 
   return (
     <ShopCartStyle>
-      <H4ShopCart onClick={openCart} data-testid="counter-elementCart">
-        {imgShopCart} {elementCart.length}
+      <H4ShopCart onClick={handleCart} data-testid="counter-elementCart">
+        {imgShopCart} {totalProducts}
       </H4ShopCart>
       <DeleteButton del data-testid="button-del" onClick={handleClickToEmpty}>
         {imgDeleteCart}
       </DeleteButton>
-      <Cart open={open} closeCart={closeCart} />
+      <Cart handleCart={handleCart} openCart={openCart} />
     </ShopCartStyle>
   );
 };

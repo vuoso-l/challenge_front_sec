@@ -3,12 +3,12 @@ import ElementCartContext from "../context/ElementCartContext";
 import { imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import { CartContainer, CartStyle, ImgContainer } from "./CartStyle";
 
-const Cart = ({ open, closeCart }) => {
-  const { elementCart, deleteHandleCart } = useContext(ElementCartContext);
-  console.log(open);
+const Cart = ({ openCart, handleCart }) => {
+  const { elementCart, deleteHandleCart } =
+    useContext(ElementCartContext) || [];
   return (
-    <CartContainer open={open}>
-      <button onClick={closeCart}>x</button>
+    <CartContainer openCart={openCart}>
+      <button onClick={handleCart}>x</button>
       {elementCart.map((item) => {
         return (
           <CartStyle key={item.product.product_id}>
@@ -33,7 +33,9 @@ const Cart = ({ open, closeCart }) => {
                 </button>
               </div>
             </ImgContainer>
-            <h4>Total: ${item.product.total_price * item.quantity}</h4>
+            <h4>
+              Total: ${(item.product.total_price * item.quantity).toFixed(2)}
+            </h4>
           </CartStyle>
         );
       })}

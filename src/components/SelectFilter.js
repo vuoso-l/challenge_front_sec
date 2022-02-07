@@ -6,7 +6,7 @@ import { SelectStyle, OptionStyle } from "./BasicTagsStyle";
 import ErrorComponent from "./ErrorComponent";
 
 const SelectFilter = ({ handleChange }) => {
-  const url = "http://localhost:5000/";
+  const url = "http://localhost:6001/";
   const categoriesUrl = "categories";
   const { data, error, isLoaded } = useFetch(`${url}${categoriesUrl}`);
 

@@ -1,73 +1,28 @@
-import React, { createContext } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
-import SweetAlert from "../helpers/SweetAlert";
+import React, { createContext, useEffect, useReducer } from "react";
+import { TYPES } from "../actions/elementCartActions";
+import { cartInitialState, cartReducers } from "../reducers/cartReducers";
 
 const ElementCartContext = createContext();
 
 const ElementCardProvider = ({ children }) => {
-  const [elementCart, setElementCart] = useLocalStorage("elementCart", []);
+  const [state, dispatch] = useReducer(cartReducers, cartInitialState);
+  const { elementCart } = state || [];
+  console.log(elementCart);
+
+  useEffect(() => {
+    localStorage.setItem("elementCart", JSON.stringify(elementCart));
+  }, [elementCart]);
 
   const handleClickToEmpty = () => {
-    SweetAlert.messageDelete(`¿Seguro que quieres vaciar el carrito?`, () => {
-      localStorage.removeItem("elementCart");
-      setElementCart([]);
-    });
+    dispatch({ type: TYPES.CLEAR_CART });
   };
 
   const addHandleCart = (product) => {
-    const prodFind = elementCart.find(
-      (item) => item.product.product_id === product.product_id
-    );
-
-    prodFind
-      ? setElementCart(
-          elementCart.map((item) =>
-            item.product.product_id === product.product_id
-              ? {
-                  ...item,
-                  quantity: item.quantity + 1,
-                }
-              : item
-          )
-        )
-      : setElementCart([...elementCart, { product, quantity: 1 }]);
-    SweetAlert.messageOk(
-      "Producto agregado al carrito!",
-      `Se agregó ${product.name}`
-    );
+    dispatch({ type: TYPES.ADD_TO_CART, payload: product });
   };
 
   const deleteHandleCart = (product) => {
-    const prodFind = elementCart.find(
-      (item) => item.product.product_id === product.product_id
-    );
-    const prodIndex = elementCart.findIndex(
-      (item) => item.product.product_id === product.product_id
-    );
-
-    if (prodFind) {
-      SweetAlert.messageDelete(
-        `¿Seguro que quieres eliminar la unidad "${product.name}" del carrito?`,
-        prodFind.quantity > 1
-          ? () =>
-              setElementCart(
-                elementCart.map((item) =>
-                  item.product.product_id === product.product_id
-                    ? {
-                        ...item,
-                        quantity: item.quantity - 1,
-                      }
-                    : item
-                )
-              )
-          : () =>
-              setElementCart(
-                elementCart.filter((item, index) => index !== prodIndex)
-              )
-      );
-    } else {
-      SweetAlert.messageError("No tienes ese producto en tu carrito");
-    }
+    dispatch({ type: TYPES.DELETE_FROM_CART, payload: product });
   };
 
   const data = {
@@ -75,7 +30,6 @@ const ElementCardProvider = ({ children }) => {
     handleClickToEmpty,
     addHandleCart,
     deleteHandleCart,
-    setElementCart,
   };
 
   return (

@@ -17,11 +17,11 @@ import ElementCartContext from "../context/ElementCartContext";
 import IsOpenContext from "../context/IsOpenContext";
 
 const ElementCard = ({ db, categorySelected }) => {
-  const { isOpen, setIsOpen } = useContext(IsOpenContext);
-  const { addHandleCart, deleteHandleCart } = useContext(ElementCartContext);
+  const { isOpen, setIsOpen } = useContext(IsOpenContext) || {};
+  const { addHandleCart, deleteHandleCart } = useContext(ElementCartContext) || {};
   const [recommendedImage, setRecommendedImage] = useState([]);
 
-  const url = "http://localhost:5000/";
+  const url = "http://localhost:6001/";
   const recommendationUrl = "recommendations";
   const { data, error, isLoaded } = useFetch(`${url}${recommendationUrl}`);
 

@@ -4,7 +4,7 @@ import { displayFlex } from "../styleAux/theme";
 
 export const CartContainer = styled.div`
   ${displayFlex("", "column", "", "center")};
-  display: ${({ open }) => (open ? "flex" : "none")};
+  display: ${({ openCart }) => (openCart ? "flex" : "none")};
   position: fixed;
   z-index: 999;
   top: 40px;
@@ -83,7 +83,7 @@ export const ImgContainer = styled.div`
   div {
     ${displayFlex("flex", "column", "space-around", "center")};
     padding: 5px 0px;
-    width: 100%;
+    width: 40%;
     h5 {
       font-size: 10px;
     }

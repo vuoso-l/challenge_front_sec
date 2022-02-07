@@ -1,20 +1,18 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ElementCard from "../components/ElementCard";
+import UserEvent from "@testing-library/user-event";
 
 let component;
 let db = [];
 let categorySelected = ["gaseosas"];
-const addHandleCart = jest.fn();
-const deleteHandleCart = jest.fn();
-let isOpen = false;
-const setIsOpen = jest.fn();
-const closeCard = jest.fn();
 
 describe("Test ElementCard", () => {
   test("Render content if db = []", () => {
-    component = render(<ElementCard db={db} />);
+    component = render(
+      <ElementCard db={db} categorySelected={categorySelected} />
+    );
     expect(component).toBeDefined();
     expect(screen.queryByText(/Inconvenientes técnicos/)).toBeNull();
   });
@@ -43,20 +41,14 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard
-        db={db}
-        categorySelected={categorySelected}
-        addHandleCart={addHandleCart}
-        deleteHandleCart={deleteHandleCart}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        closeCard={closeCard}
-      />
+      <ElementCard db={db} categorySelected={categorySelected} />
     );
     expect(component).toBeDefined();
   });
   test("Render error component", async () => {
-    component = render(<ElementCard db={db} />);
+    component = render(
+      <ElementCard db={db} categorySelected={categorySelected} />
+    );
 
     expect(
       await screen.findByText(/Inconvenientes técnicos/)
@@ -88,16 +80,11 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard
-        db={db}
-        addHandleCart={addHandleCart}
-        deleteHandleCart={deleteHandleCart}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
+      <ElementCard db={db} categorySelected={categorySelected} />
     );
 
-    fireEvent.click(await screen.findByTestId("img-openCard"));
+    const imgBtn = await screen.findByTestId("img-openCard");
+    UserEvent.click(imgBtn);
   });
   test("Click to add a product in the cart", async () => {
     db = [
@@ -124,15 +111,11 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard
-        db={db}
-        isOpen={isOpen}
-        closeCard={closeCard}
-        addHandleCart={addHandleCart}
-      />
+      <ElementCard db={db} categorySelected={categorySelected} />
     );
 
-    fireEvent.click(await screen.findByTestId("btn-addCart"));
+    const btn = await screen.findByTestId("btn-addCart");
+    UserEvent.click(btn);
   });
   test("Click to delete a product from the cart", async () => {
     db = [
@@ -158,11 +141,12 @@ describe("Test ElementCard", () => {
         price_per_litre: "201",
       },
     ];
-    const deleteHandleCart = jest.fn();
+
     component = render(
-      <ElementCard db={db} deleteHandleCart={deleteHandleCart} />
+      <ElementCard db={db} categorySelected={categorySelected} />
     );
 
-    fireEvent.click(await screen.findByTestId("btn-delCart"));
+    const btn = await screen.findByTestId("btn-delCart");
+    UserEvent.click(btn);
   });
 });

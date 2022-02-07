@@ -10,10 +10,10 @@ import { H2Style, GralButton } from "./BasicTagsStyle";
 import IsOpenContext from "../context/IsOpenContext";
 
 const CardProduct = () => {
-  const { isOpen, closeCard } = useContext(IsOpenContext);
+  const { isOpen, closeCard } = useContext(IsOpenContext) || {};
   const [categorySelected, setCategorySelected] = useState("all");
 
-  const url = "http://localhost:5000/";
+  const url = "http://localhost:6001/";
   const productsUrl = "products";
 
   const { data, error, isLoaded } = useFetch(`${url}${productsUrl}`);
