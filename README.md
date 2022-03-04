@@ -1,4 +1,15 @@
 # **React challenge - Siempre en casa**
-## Comandos para iniciar el proyecto:
-- Para correr el proyecto: npm start
-- Para correr el servidor: npm run watch
+
+## Comands to run the project
+- To run the project: npm start
+- To run the server: npm run watch
+
+## Used technologies
+- React Js
+  - useReducers
+  - useContext
+  - useState
+  - useEffect
+- Javascript
+- Styled-components
+- React-testing-library
