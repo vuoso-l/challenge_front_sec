@@ -13,7 +13,7 @@ const CardProduct = () => {
   const { isOpen, closeCard } = useContext(IsOpenContext) || {};
   const [categorySelected, setCategorySelected] = useState("all");
 
-  const url = "http://localhost:6001/";
+  const url = "https://backend-challenge-sec.herokuapp.com/";
   const productsUrl = "products";
 
   const { data, error, isLoaded } = useFetch(`${url}${productsUrl}`);

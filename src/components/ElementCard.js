@@ -21,7 +21,7 @@ const ElementCard = ({ db, categorySelected }) => {
   const { addHandleCart, deleteHandleCart } = useContext(ElementCartContext) || {};
   const [recommendedImage, setRecommendedImage] = useState([]);
 
-  const url = "http://localhost:6001/";
+  const url = "https://backend-challenge-sec.herokuapp.com/";
   const recommendationUrl = "recommendations";
   const { data, error, isLoaded } = useFetch(`${url}${recommendationUrl}`);
 
