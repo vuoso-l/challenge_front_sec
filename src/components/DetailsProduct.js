@@ -3,13 +3,13 @@ import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
 import { DetailsProductContainer } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 import ElementCartContext from "../context/ElementCartContext";
-import IsOpenContext from "../context/IsOpenElementCardContext";
+import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
 import { ElementCardStyle } from "./ElementCardStyle";
 import logo from "../images/logo_sec.svg";
 
 const DetailsProduct = ({ product, recommendedImage }) => {
   const { addHandleCart } = useContext(ElementCartContext) || {};
-  const { isOpen, closeCard } = useContext(IsOpenContext) || {};
+  const { isOpen, closeCard } = useContext(IsOpenDetailProductContext) || {};
   const handleContainerClick = (e) => e.stopPropagation();
 
   return (

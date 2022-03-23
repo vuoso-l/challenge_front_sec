@@ -14,11 +14,11 @@ import {
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import ErrorComponent from "./ErrorComponent";
 import ElementCartContext from "../context/ElementCartContext";
-import IsOpenElementCardContext from "../context/IsOpenElementCardContext";
+import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
 import logo from "../images/logo_sec.svg";
 
 const ElementCard = ({ db, categorySelected }) => {
-  const { isOpen, setIsOpen } = useContext(IsOpenElementCardContext) || {};
+  const { isOpen, setIsOpen } = useContext(IsOpenDetailProductContext) || {};
   const { addHandleCart, deleteHandleCart } =
     useContext(ElementCartContext) || {};
   const [recommendedImage, setRecommendedImage] = useState([]);
