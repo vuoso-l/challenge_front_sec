@@ -7,10 +7,10 @@ import { useFetch } from "../hooks/useFetch";
 import { CardProductStyle } from "./CardProductStyle";
 import ErrorComponent from "./ErrorComponent";
 import { H2Style, GralButton } from "./BasicTagsStyle";
-import IsOpenContext from "../context/IsOpenContext";
+import IsOpenElementCardContext from "../context/IsOpenElementCardContext";
 
 const CardProduct = () => {
-  const { isOpen, closeCard } = useContext(IsOpenContext) || {};
+  const { isOpen, closeCard } = useContext(IsOpenElementCardContext) || {};
   const [categorySelected, setCategorySelected] = useState("all");
 
   const url = "https://backend-challenge-sec.herokuapp.com/";

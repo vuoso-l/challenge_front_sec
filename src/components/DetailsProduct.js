@@ -3,7 +3,7 @@ import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
 import { DetailsProductContainer } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 import ElementCartContext from "../context/ElementCartContext";
-import IsOpenContext from "../context/IsOpenContext";
+import IsOpenContext from "../context/IsOpenElementCardContext";
 import { ElementCardStyle } from "./ElementCardStyle";
 
 const DetailsProduct = ({ product, recommendedImage }) => {
