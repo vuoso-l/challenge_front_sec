@@ -3,12 +3,13 @@ import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
 import { DetailsProductContainer } from "./DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 import ElementCartContext from "../context/ElementCartContext";
-import IsOpenContext from "../context/IsOpenContext";
+import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
 import { ElementCardStyle } from "./ElementCardStyle";
+import logo from "../images/logo_sec.svg";
 
 const DetailsProduct = ({ product, recommendedImage }) => {
   const { addHandleCart } = useContext(ElementCartContext) || {};
-  const { isOpen, closeCard } = useContext(IsOpenContext) || {};
+  const { isOpen, closeCard } = useContext(IsOpenDetailProductContext) || {};
   const handleContainerClick = (e) => e.stopPropagation();
 
   return (
@@ -25,10 +26,7 @@ const DetailsProduct = ({ product, recommendedImage }) => {
                 {prod.image_url ? (
                   <ImgStyle src={prod.image_url} alt={prod.name}></ImgStyle>
                 ) : (
-                  <ImgStyle
-                    src="//cdn.shopify.com/s/files/1/0254/2947/5433/t/12/assets/new_logo-black.svg?v=15514233714370248417?nocache=0.4027801373597353"
-                    alt="Logo"
-                  ></ImgStyle>
+                  <ImgStyle src={logo} alt="Logo"></ImgStyle>
                 )}
                 <H4Style>${prod.total_price}</H4Style>
                 <AddButton

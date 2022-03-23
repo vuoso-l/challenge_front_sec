@@ -4,16 +4,16 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Cart from "../components/Cart";
 import { ElementCardProvider } from "../context/ElementCartContext";
-import { IsOpenProvider } from "../context/IsOpenContext";
+import { IsOpenDetailProductProvider } from "../context/IsOpenDetailProductContext";
 
 const ProductsPage = () => {
   return (
     <ElementCardProvider>
       <Header />
-      <IsOpenProvider>
+      <IsOpenDetailProductProvider>
         <Cart />
         <CardProduct />
-      </IsOpenProvider>
+      </IsOpenDetailProductProvider>
       <Footer />
     </ElementCardProvider>
   );

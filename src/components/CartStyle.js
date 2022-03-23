@@ -26,7 +26,7 @@ export const CartContainer = styled.div`
     padding: 3px 5px;
     color: white;
     background-color: red;
-    font-size: 10px;
+    font-size: 16px;
     text-align: center;
     &:hover {
       cursor: pointer;
@@ -35,11 +35,14 @@ export const CartContainer = styled.div`
   @media ${device.tablet} {
     width: 20%;
     button {
-      font-size: 12px;
+      font-size: 18px;
     }
   }
   @media ${device.laptop} {
     width: 15%;
+    button {
+      font-size: 22px;
+    }
   }
 `;
 
