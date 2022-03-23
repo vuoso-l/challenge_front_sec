@@ -1,5 +1,5 @@
 export const color = {
-    bgPrimary: "rgb(61, 61, 240)",
+    bgPrimary: "rgb(90 90 241 / 93%)",
     bgSecondary: "#3f87a6",
     addBtn: "#0000ffb0",
 }
