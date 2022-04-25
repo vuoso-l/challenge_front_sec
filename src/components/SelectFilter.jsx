@@ -1,8 +1,8 @@
-import React from "react";
 import { useFetch } from "../hooks/useFetch";
-import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { SelectStyle, OptionStyle } from "../styledComponent/BasicTagsStyle";
+
+import Loader from "./Loader";
 import ErrorComponent from "./ErrorComponent";
 
 const SelectFilter = ({ handleChange }) => {

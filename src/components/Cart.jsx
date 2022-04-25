@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+
 import ElementCartContext from "../context/ElementCartContext";
 import { imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import {
@@ -10,6 +11,7 @@ import {
 const Cart = ({ openCart, handleCart }) => {
   const { elementCart, deleteHandleCart } =
     useContext(ElementCartContext) || [];
+
   return (
     <CartContainer openCart={openCart}>
       <button onClick={handleCart}>x</button>

@@ -1,12 +1,12 @@
-import React from "react";
-import ShopCart from "./ShopCart";
 import { HeaderStyle } from "../styledComponent/HeaderStyle";
 import logo from "../images/logo_sec.svg";
+
+import ShopCart from "./ShopCart";
 
 const Header = () => {
   return (
     <HeaderStyle>
-      <img src={logo} alt="Logo"></img>
+      <img src={logo} alt="Logo" />
       <ShopCart />
     </HeaderStyle>
   );

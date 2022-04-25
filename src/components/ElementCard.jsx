@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-import DetailsProduct from "./DetailsProduct";
+import { useContext, useState } from "react";
+
 import { useFetch } from "../hooks/useFetch";
-import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { ElementCardStyle } from "../styledComponent/ElementCardStyle";
 import {
@@ -12,10 +11,13 @@ import {
   DeleteButton,
 } from "../styledComponent/BasicTagsStyle";
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
-import ErrorComponent from "./ErrorComponent";
 import ElementCartContext from "../context/ElementCartContext";
 import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
 import logo from "../images/logo_sec.svg";
+
+import ErrorComponent from "./ErrorComponent";
+import Loader from "./Loader";
+import DetailsProduct from "./DetailsProduct";
 
 const ElementCard = ({ db, categorySelected }) => {
   const { isOpen, setIsOpen } = useContext(IsOpenDetailProductContext) || {};
@@ -33,11 +35,12 @@ const ElementCard = ({ db, categorySelected }) => {
     data.map(
       (rec) =>
         e.target.id === rec.product_id &&
-        setRecommendedImage(rec.recommendations)
+        setRecommendedImage(rec.recommendations),
     );
   };
 
   let filterDb;
+
   if (categorySelected === "all" || categorySelected === "") {
     filterDb = db.filter((prod) => prod.categories !== categorySelected);
   } else if (categorySelected !== "all") {
@@ -45,7 +48,7 @@ const ElementCard = ({ db, categorySelected }) => {
       (prod) =>
         prod.categories !== undefined &&
         (prod.categories[0] === categorySelected ||
-          prod.categories[1] === categorySelected)
+          prod.categories[1] === categorySelected),
     );
   }
 
@@ -73,14 +76,14 @@ const ElementCard = ({ db, categorySelected }) => {
                   onClick={openCard}
                   src={product.image_url}
                   alt={product.name}
-                ></ElementCardImg>
+                />
               ) : (
                 <ElementCardImg
                   id={product.product_id}
                   onClick={openCard}
                   src={logo}
                   alt="Logo"
-                ></ElementCardImg>
+                />
               )}
 
               <H4Style>${product.total_price}</H4Style>

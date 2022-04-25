@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
-import ElementCard from "./ElementCard";
-import SelectFilter from "./SelectFilter";
-import Loader from "./Loader";
+import { useContext, useState } from "react";
+
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
 import { CardProductStyle } from "../styledComponent/CardProductStyle";
-import ErrorComponent from "./ErrorComponent";
 import { H2Style, GralButton } from "../styledComponent/BasicTagsStyle";
 import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
+
+import ErrorComponent from "./ErrorComponent";
+import Loader from "./Loader";
+import SelectFilter from "./SelectFilter";
+import ElementCard from "./ElementCard";
 
 const CardProduct = () => {
   const { isOpen, closeCard } = useContext(IsOpenDetailProductContext) || {};

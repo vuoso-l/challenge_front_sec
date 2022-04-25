@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+
 import {
   ImgStyle,
   H4Style,
@@ -28,9 +29,9 @@ const DetailsProduct = ({ product, recommendedImage }) => {
               >
                 <H4Style>{prod.name}</H4Style>
                 {prod.image_url ? (
-                  <ImgStyle src={prod.image_url} alt={prod.name}></ImgStyle>
+                  <ImgStyle src={prod.image_url} alt={prod.name} />
                 ) : (
-                  <ImgStyle src={logo} alt="Logo"></ImgStyle>
+                  <ImgStyle src={logo} alt="Logo" />
                 )}
                 <H4Style>${prod.total_price}</H4Style>
                 <AddButton
