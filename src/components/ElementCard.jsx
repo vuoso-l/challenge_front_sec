@@ -33,7 +33,7 @@ const ElementCard = ({ db, categorySelected }) => {
     data.map(
       (rec) =>
         e.target.id === rec.product_id &&
-        setRecommendedImage(rec.recommendations),
+        setRecommendedImage(rec.recommendations)
     );
   };
 
@@ -45,7 +45,7 @@ const ElementCard = ({ db, categorySelected }) => {
       (prod) =>
         prod.categories !== undefined &&
         (prod.categories[0] === categorySelected ||
-          prod.categories[1] === categorySelected),
+          prod.categories[1] === categorySelected)
     );
   }
 

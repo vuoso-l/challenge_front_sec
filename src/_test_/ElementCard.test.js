@@ -1,8 +1,8 @@
-import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import ElementCard from "../components/ElementCard";
 import UserEvent from "@testing-library/user-event";
+
+import ElementCard from "../components/ElementCard";
 
 let component;
 let db = [];
@@ -11,7 +11,7 @@ let categorySelected = ["gaseosas"];
 describe("Test ElementCard", () => {
   test("Render content if db = []", () => {
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
     expect(component).toBeDefined();
     expect(screen.queryByText(/Inconvenientes técnicos/)).toBeNull();
@@ -41,17 +41,17 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
     expect(component).toBeDefined();
   });
   test("Render error component", async () => {
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
 
     expect(
-      await screen.findByText(/Inconvenientes técnicos/)
+      await screen.findByText(/Inconvenientes técnicos/),
     ).toBeInTheDocument();
     expect(await screen.findByAltText(/Logo/)).toBeInTheDocument();
   });
@@ -80,10 +80,11 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
 
     const imgBtn = await screen.findByTestId("img-openCard");
+
     UserEvent.click(imgBtn);
   });
   test("Click to add a product in the cart", async () => {
@@ -111,10 +112,11 @@ describe("Test ElementCard", () => {
       },
     ];
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
 
     const btn = await screen.findByTestId("btn-addCart");
+
     UserEvent.click(btn);
   });
   test("Click to delete a product from the cart", async () => {
@@ -143,10 +145,11 @@ describe("Test ElementCard", () => {
     ];
 
     component = render(
-      <ElementCard db={db} categorySelected={categorySelected} />
+      <ElementCard db={db} categorySelected={categorySelected} />,
     );
 
     const btn = await screen.findByTestId("btn-delCart");
+
     UserEvent.click(btn);
   });
 });

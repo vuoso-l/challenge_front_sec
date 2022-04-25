@@ -1,6 +1,7 @@
 import { TYPES } from "../actions/elementCartActions";
 
 const productCart = JSON.parse(localStorage.getItem("elementCart"));
+
 export const cartInitialState = {
   elementCart: productCart === null ? [] : productCart,
 };
@@ -10,8 +11,9 @@ export function cartReducers(state, action) {
     case TYPES.ADD_TO_CART: {
       const product = action.payload;
       const prodFind = state.elementCart.find(
-        (item) => item.product.product_id === product.product_id
+        (item) => item.product.product_id === product.product_id,
       );
+
       return prodFind
         ? {
             ...state,
@@ -21,7 +23,7 @@ export function cartReducers(state, action) {
                     ...item,
                     quantity: item.quantity + 1,
                   }
-                : item
+                : item,
             ),
           }
         : {
@@ -32,10 +34,10 @@ export function cartReducers(state, action) {
     case TYPES.DELETE_FROM_CART: {
       const product = action.payload;
       const prodFind = state.elementCart.find(
-        (item) => item.product.product_id === product.product_id
+        (item) => item.product.product_id === product.product_id,
       );
       const prodIndex = state.elementCart.findIndex(
-        (item) => item.product.product_id === product.product_id
+        (item) => item.product.product_id === product.product_id,
       );
 
       return prodFind
@@ -48,13 +50,13 @@ export function cartReducers(state, action) {
                       ...item,
                       quantity: item.quantity - 1,
                     }
-                  : item
+                  : item,
               ),
             }
           : {
               ...state,
               elementCart: state.elementCart.filter(
-                (item, index) => index !== prodIndex
+                (item, index) => index !== prodIndex,
               ),
             }
         : state;
@@ -63,7 +65,6 @@ export function cartReducers(state, action) {
       localStorage.removeItem("elementCart");
 
       return cartInitialState;
-       
     }
     default:
       return state;

@@ -1,11 +1,12 @@
-import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
+
 import Header from "../components/Header";
 
 let product = [];
+
 describe("Test Header", () => {
-  test("Render content if elementCart = []", () => {    
+  test("Render content if elementCart = []", () => {
     expect(render(<Header elementCart={product} />)).toBeDefined();
   });
   test("Render content if elementCart have one object", () => {
@@ -35,7 +36,7 @@ describe("Test Header", () => {
     expect(render(<Header elementCart={product} />)).toBeDefined();
   });
   test("Render content if elementCart have more than one object", () => {
-     product = [
+    product = [
       {
         product_id: "4854058319917",
         variant_id: "33619202211885",
@@ -84,9 +85,11 @@ describe("Test Header", () => {
   test("Render image", () => {
     const src =
       "//cdn.shopify.com/s/files/1/0254/2947/5433/t/12/assets/new_logo-black.svg?v=15514233714370248417?nocache=0.4027801373597353";
+
     render(<Header elementCart={product} src={src} />);
 
     const logo = screen.getByRole("img");
+
     expect(logo).toHaveAttribute("src", src);
     expect(logo).toHaveAttribute("alt", "Logo");
   });

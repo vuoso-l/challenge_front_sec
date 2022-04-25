@@ -1,7 +1,7 @@
-import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import UserEvent from "@testing-library/user-event";
+
 import DetailsProduct from "../components/DetailsProduct";
 
 let component;
@@ -10,7 +10,9 @@ let recImage = [];
 
 describe("Test DetailProduct", () => {
   test("Render content if recommendedImage and product = []", () => {
-    component = render(<DetailsProduct recommendedImage={recImage} product={product} />)
+    component = render(
+      <DetailsProduct recommendedImage={recImage} product={product} />,
+    );
     expect(component).toBeDefined();
   });
   test("Render content if recommendedImage and product have one object", () => {
@@ -73,6 +75,7 @@ describe("Test DetailProduct", () => {
 
     render(<DetailsProduct recommendedImage={recImage} product={product} />);
     const btn = await screen.findByTestId("btn-addCart");
+
     UserEvent.click(btn);
   });
 });

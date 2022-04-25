@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { device } from "../styleAux/deviceSize";
 import { color } from "../styleAux/theme";
 

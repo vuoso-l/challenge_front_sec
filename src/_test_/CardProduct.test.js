@@ -1,9 +1,10 @@
-import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+
 import CardProduct from "../components/CardProduct";
 
 let component;
+
 describe("Test CardProduct", () => {
   test("Render content", () => {
     component = render(<CardProduct />);
@@ -14,7 +15,7 @@ describe("Test CardProduct", () => {
     component = render(<CardProduct />);
 
     expect(
-      await screen.findByText(/Inconvenientes técnicos/)
+      await screen.findByText(/Inconvenientes técnicos/),
     ).toBeInTheDocument();
     expect(await screen.findByAltText(/Logo/)).toBeInTheDocument();
   });

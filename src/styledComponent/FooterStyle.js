@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { device } from "../styleAux/deviceSize";
 import { color, displayFlex } from "../styleAux/theme";
 
@@ -34,21 +35,21 @@ const FooterStyle = styled.footer`
     div {
       flex-direction: row;
       ul {
-          flex-direction: row;
-          font-size: 18px;
-          li {
-            padding: 10px 10px;
-          }
+        flex-direction: row;
+        font-size: 18px;
+        li {
+          padding: 10px 10px;
+        }
       }
     }
   }
   @media ${device.laptop} {
-    div {      
+    div {
       ul {
-          font-size: 22px;
-          li {
-            padding: 10px 20px;
-          }
+        font-size: 22px;
+        li {
+          padding: 10px 20px;
+        }
       }
     }
   }

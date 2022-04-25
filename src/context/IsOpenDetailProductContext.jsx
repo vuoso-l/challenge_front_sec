@@ -9,7 +9,9 @@ const IsOpenDetailProductProvider = ({ children }) => {
   const data = { isOpen, setIsOpen, closeCard };
 
   return (
-    <IsOpenDetailProductContext.Provider value={data}>{children}</IsOpenDetailProductContext.Provider>
+    <IsOpenDetailProductContext.Provider value={data}>
+      {children}
+    </IsOpenDetailProductContext.Provider>
   );
 };
 

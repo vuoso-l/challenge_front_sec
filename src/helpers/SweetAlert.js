@@ -14,34 +14,34 @@ const SweetAlert = {
 
   messageOk: (title, text) => {
     Swal.fire({
-        title,
-        text,
-        icon: "success",
-        confirmButtonColor: "#3085d6",
-        confirmButtonText: "OK",
-        toast: true,
-      });
+      title,
+      text,
+      icon: "success",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "OK",
+      toast: true,
+    });
   },
 
   messageDelete: (title, callback) => {
     Swal.fire({
       title,
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminar!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        callback()
+        callback();
         Swal.fire(
-          'Eliminado!',
-          'La eliminación se produjo satisfactoriamente!',
-          'success'
-        )
+          "Eliminado!",
+          "La eliminación se produjo satisfactoriamente!",
+          "success",
+        );
       }
-    })
-  }
+    });
+  },
 };
 
 export default SweetAlert;

@@ -12,7 +12,7 @@ const ShopCart = () => {
   const handleCart = () => setOpenCart(!openCart);
 
   const productsQuantity = elementCart.map(
-    (item) => item.quantity > 0 && item.quantity,
+    (item) => item.quantity > 0 && item.quantity
   );
   const totalProducts = productsQuantity.reduce((a, b) => a + b, 0);
 
