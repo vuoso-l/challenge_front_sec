@@ -19,7 +19,7 @@ const ElementCardProvider = ({ children }) => {
   const handleClickToEmpty = () => {
     if (elementCart.length > 0) {
       SweetAlert.messageDelete(`¿Seguro que quieres vaciar el carrito?`, () =>
-        dispatch({ type: TYPES.CLEAR_CART }),
+        dispatch({ type: TYPES.CLEAR_CART })
       );
     } else {
       SweetAlert.messageError("El carrito está vacío");
@@ -30,19 +30,19 @@ const ElementCardProvider = ({ children }) => {
     dispatch({ type: TYPES.ADD_TO_CART, payload: product });
     SweetAlert.messageOk(
       "Producto agregado al carrito!",
-      `Se agregó ${product.name}`,
+      `Se agregó ${product.name}`
     );
   };
 
   const deleteHandleCart = (product) => {
     const similarProduct = elementCart.find(
-      (item) => item.product.product_id === product.product_id,
+      (item) => item.product.product_id === product.product_id
     );
 
     if (similarProduct) {
       SweetAlert.messageDelete(
         `¿Seguro que quieres eliminar la unidad "${product.name}" del carrito ?`,
-        () => dispatch({ type: TYPES.DELETE_FROM_CART, payload: product }),
+        () => dispatch({ type: TYPES.DELETE_FROM_CART, payload: product })
       );
     } else {
       SweetAlert.messageError("No tienes este producto en tu carrito");
