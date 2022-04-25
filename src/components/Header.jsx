@@ -1,6 +1,6 @@
 import React from "react";
 import ShopCart from "./ShopCart";
-import { HeaderStyle } from "./HeaderStyle";
+import { HeaderStyle } from "../styledComponent/HeaderStyle";
 import logo from "../images/logo_sec.svg";
 
 const Header = () => {

@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
-import { ImgStyle, H4Style, AddButton } from "./BasicTagsStyle";
-import { DetailsProductContainer } from "./DetailsProductStyle";
+import {
+  ImgStyle,
+  H4Style,
+  AddButton,
+} from "../styledComponent/BasicTagsStyle";
+import { DetailsProductContainer } from "../styledComponent/DetailsProductStyle";
 import { imgShopCart } from "../styleAux/fontAwesoneIcon";
 import ElementCartContext from "../context/ElementCartContext";
 import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
-import { ElementCardStyle } from "./ElementCardStyle";
+import { ElementCardStyle } from "../styledComponent/ElementCardStyle";
 import logo from "../images/logo_sec.svg";
 
 const DetailsProduct = ({ product, recommendedImage }) => {

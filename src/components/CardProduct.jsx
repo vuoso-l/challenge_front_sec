@@ -4,9 +4,9 @@ import SelectFilter from "./SelectFilter";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
 import { useFetch } from "../hooks/useFetch";
-import { CardProductStyle } from "./CardProductStyle";
+import { CardProductStyle } from "../styledComponent/CardProductStyle";
 import ErrorComponent from "./ErrorComponent";
-import { H2Style, GralButton } from "./BasicTagsStyle";
+import { H2Style, GralButton } from "../styledComponent/BasicTagsStyle";
 import IsOpenDetailProductContext from "../context/IsOpenDetailProductContext";
 
 const CardProduct = () => {

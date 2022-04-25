@@ -3,14 +3,14 @@ import DetailsProduct from "./DetailsProduct";
 import { useFetch } from "../hooks/useFetch";
 import Loader from "./Loader";
 import SweetAlert from "../helpers/SweetAlert";
-import { ElementCardStyle } from "./ElementCardStyle";
+import { ElementCardStyle } from "../styledComponent/ElementCardStyle";
 import {
   ElementCardImg,
   H3Style,
   H4Style,
   AddButton,
   DeleteButton,
-} from "./BasicTagsStyle";
+} from "../styledComponent/BasicTagsStyle";
 import { imgShopCart, imgDeleteCart } from "../styleAux/fontAwesoneIcon";
 import ErrorComponent from "./ErrorComponent";
 import ElementCartContext from "../context/ElementCartContext";
@@ -33,7 +33,7 @@ const ElementCard = ({ db, categorySelected }) => {
     data.map(
       (rec) =>
         e.target.id === rec.product_id &&
-        setRecommendedImage(rec.recommendations)
+        setRecommendedImage(rec.recommendations),
     );
   };
 
@@ -45,7 +45,7 @@ const ElementCard = ({ db, categorySelected }) => {
       (prod) =>
         prod.categories !== undefined &&
         (prod.categories[0] === categorySelected ||
-          prod.categories[1] === categorySelected)
+          prod.categories[1] === categorySelected),
     );
   }
 

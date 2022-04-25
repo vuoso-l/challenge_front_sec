@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import ElementCartContext from "../context/ElementCartContext";
 import { imgDeleteCart } from "../styleAux/fontAwesoneIcon";
-import { CartContainer, CartStyle, ImgContainer } from "./CartStyle";
+import {
+  CartContainer,
+  CartStyle,
+  ImgContainer,
+} from "../styledComponent/CartStyle";
 
 const Cart = ({ openCart, handleCart }) => {
   const { elementCart, deleteHandleCart } =

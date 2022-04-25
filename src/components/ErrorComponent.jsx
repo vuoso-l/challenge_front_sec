@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { H2Style } from "./BasicTagsStyle";
+import { H2Style } from "../styledComponent/BasicTagsStyle";
 import { device } from "../styleAux/deviceSize";
 
 const rotateImage = keyframes`
@@ -19,7 +19,7 @@ const ErrorContainer = styled.div`
   position: relative;
   padding: 20px 0;
   @media ${device.tablet} {
-    padding:100px 50px;
+    padding: 100px 50px;
   }
 `;
 
