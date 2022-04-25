@@ -16,3 +16,5 @@
 - Javascript
 - Styled-components
 - React-testing-library
+- Eslint, Prettier, Husky y lint-staged
+- Deploy in Vercel
